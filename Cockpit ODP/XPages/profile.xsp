@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xp:view xmlns:xp="http://www.ibm.com/xsp/core"
-	xmlns:xc="http://www.ibm.com/xsp/custom">
-
-	<xc:ccLayoutBootstrapDynamic></xc:ccLayoutBootstrapDynamic></xp:view>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xc="http://www.ibm.com/xsp/custom">
+	<xp:this.data>
+		<xp:dominoDocument var="document1" formName="profile"
+			action="openDocument">
+			<xp:this.documentId><![CDATA[#{javascript:@DbLookup(@DbName(), "profiles", "profile", "Form", "[RETURNDOCUMENTUNIQUEID]")}]]></xp:this.documentId>
+		</xp:dominoDocument>
+	</xp:this.data>
+	<xc:ccLayoutBootstrapDynamic></xc:ccLayoutBootstrapDynamic>
+</xp:view>

@@ -30,8 +30,9 @@ if(url.indexOf(".xsp")==-1){
 						<span class="icon-bar"></span>
 					</button>
 
-					<xp:link disableTheme="true" id="link2">
-						<xp:this.styleClass><![CDATA[#{javascript:return "navbar-brand " + (view.getPageName().indexOf("index")==-1 ? "nav-disabled" : "")}]]></xp:this.styleClass>
+					<xp:link disableTheme="true" id="link2"
+						styleClass="navbar-brand" value="/index.xsp">
+
 						<xp:image
 							style="margin-left:-12px;margin-right:10px;margin-top:-8px;overflow:hidden"
 							url="/1394393063_dashboard.png" id="image1">
@@ -39,12 +40,7 @@ if(url.indexOf(".xsp")==-1){
 						<xp:text value="#{javascript:@DbTitle()}"
 							style="color:rgb(255,255,255)">
 						</xp:text>
-						<xp:eventHandler event="onclick" submit="true"
-							refreshMode="partial" refreshId="page" immediate="true">
-							<xp:this.action><![CDATA[#{javascript:getComponent("dynamicContent1").show("start")
-getComponent("dynamicContent2").show("start")
-sessionScope.put("page", "start")}]]></xp:this.action>
-						</xp:eventHandler>
+
 					</xp:link>
 
 				</div>
@@ -85,14 +81,15 @@ sessionScope.put("page", "start")}]]></xp:this.action>
 						</xp:panel>
 
 						<li class="dropdown">
-							<xp:link disableTheme="true" value="#">
+							<xp:link disableTheme="true" value="#" styleClass="dropdown-toggle">
 								
 								<xp:this.attrs>
-									<xp:attr name="data-toggle">
-										<xp:this.value><![CDATA[#{javascript:(view.getPageName().indexOf("index")==-1 ? "" : "dropdown")}]]></xp:this.value>
+									<xp:attr name="data-toggle"
+										value="dropdown">
+
 									</xp:attr>
 								</xp:this.attrs>
-								<xp:this.styleClass><![CDATA[#{javascript:"dropdown-toggle "+(view.getPageName().indexOf("index")==-1 ? "nav-disabled" : "")}]]></xp:this.styleClass><xp:text>
+								<xp:text>
 									<xp:this.value><![CDATA[#{javascript:var uploads = database.search("SELECT Form=\"file\" & @IsAvailable($PublicAccess)").getCount();
 var uploadtext = (uploads>0)?" ("+uploads.toString()+")":""; 
 
