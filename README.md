@@ -1,4 +1,4 @@
 Cockpit
 =======
 
-Trouble Tickets
+Simple Trouble Tickets application
