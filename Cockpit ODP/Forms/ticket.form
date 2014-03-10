@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='utf-8'?>
+<note class='form' xmlns='http://www.lotus.com/dxl' version='9.0' maintenanceversion='1.0'
+ replicaid='C1257C96004E0544'>
+<noteinfo noteid='26a' unid='19C4960B273316DFC1257C96005F8C14' sequence='8'>
+<created><datetime>20140309T182337,80+01</datetime></created>
+<modified><datetime>20140310T011156,64+01</datetime></modified>
+<revised><datetime>20140310T011156,63+01</datetime></revised>
+<lastaccessed><datetime>20140310T011156,64+01</datetime></lastaccessed>
+<addedtofile><datetime>20140309T182338,00+01</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Oliver Busse/O=ulcbs</name></updatedby>
+<wassignedby><name>CN=Oliver Busse/O=ulcbs</name></wassignedby>
+<item name='$Comment' sign='true'><text/></item>
+<item name='$HTMLCode' sign='true'>
+<rawitemdata type='1'>
+X/8QAAIADwAHAAAAAAAAAA==
+</rawitemdata></item>
+<item name='$TITLE'><text>ticket</text></item>
+<item name='$Info' sign='true'>
+<rawitemdata type='1'>
+hhgBAIAAAAAAgAAAAQABAP///wAQAAAA
+</rawitemdata></item>
+<item name='$Flags'><text>CD</text></item>
+<item name='$DesignerVersion'><text>8.5.3</text></item>
+<item name='$$ScriptName' summary='false' sign='true'><text>ticket</text></item>
+<item name='ticketID' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='ticketCreated' summary='false'>
+<rawitemdata type='400'>
+AAAAAAAAAAA=
+</rawitemdata></item>
+<item name='ticketUpdated' summary='false'>
+<rawitemdata type='400'>
+AAAAAAAAAAA=
+</rawitemdata></item>
+<item name='ticketStatus' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='ticketSubject' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='ticketAbstract' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='ticketDescription' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='ticketCustomerID' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='ticketAsset' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='ticketPriority' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='ticketResponsible' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='$Fields'><textlist><text>ticketResponsible</text><text>ticketPriority</text><text
+>ticketAsset</text><text>ticketCustomerID</text><text>ticketDescription</text><text
+>ticketAbstract</text><text>ticketSubject</text><text>ticketStatus</text><text
+>ticketUpdated</text><text>ticketCreated</text><text>ticketID</text></textlist></item>
+<item name='$Body' sign='true'>
+<rawitemdata type='1'>
+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
+AAAAAAAAAN4GAACK/4X/CAABAAAK
+</rawitemdata></item></note>
+

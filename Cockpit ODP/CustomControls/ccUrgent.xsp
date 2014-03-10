@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<span class="glyphicon glyphicon-fire"></span>
+				&#160;Urgent
+			</h4>
+		</div>
+		<table
+			class="panel-body table table-striped table-condensed table-hover #{javascript: return compositeData.isWidget?'tiny':''}">
+			<colgroup>
+				<col width="30%" />
+				<col width="40%" />
+				<col width="30%" />
+			</colgroup>
+			<thead>
+				<tr>
+					<th>Created</th>
+					<th>Subject</th>
+					<th>Assigned to</th>
+				</tr>
+			</thead>
+			<tbody>
+				<xp:repeat id="repeat1"
+					rows="#{javascript: return compositeData.isWidget?10:30}" var="doc">
+					<xp:this.value><![CDATA[#{javascript:return database.getView("ticketsByPrio").getAllDocumentsByKey("1")}]]></xp:this.value>
+					<tr>
+						<td>
+							<span class="glyphicon glyphicon-time"></span>
+							&#160;
+							<xp:text escape="true" id="computedField1" value="#{doc.ticketCreated}">
+								<xp:this.converter>
+									<xp:convertDateTime type="both" dateStyle="short"
+										timeStyle="short">
+									</xp:convertDateTime>
+								</xp:this.converter>
+							</xp:text>
+						</td>
+						<td>
+							<xp:link escape="true" id="link1" disableTheme="true">
+								<xp:this.text><![CDATA[#{javascript:doc.getItemValueString("ticketSubject")}]]></xp:this.text>
+								<xp:eventHandler event="onclick" submit="true"
+									refreshMode="complete" immediate="true">
+									<xp:this.action>
+										<xp:openPage name="/ticket.xsp" target="openDocument"
+											documentId="#{javascript:doc.getUniversalID()}">
+										</xp:openPage>
+									</xp:this.action>
+								</xp:eventHandler>
+							</xp:link>
+						</td>
+						<td>
+							<xp:link escape="true" id="link2" disableTheme="true">
+								<xp:this.text><![CDATA[#{javascript:@Name("[Abbreviate]", doc.getItemValueString("ticketResponsible"))}]]></xp:this.text>
+								<xp:eventHandler event="onclick" submit="true"
+									refreshMode="complete" immediate="true">
+									<xp:this.action>
+										<xp:openPage name="/ticket.xsp" target="openDocument"
+											documentId="#{javascript:doc.getUniversalID()}">
+										</xp:openPage>
+									</xp:this.action>
+								</xp:eventHandler>
+							</xp:link>
+						</td>
+					</tr>
+				</xp:repeat>
+			</tbody>
+		</table>
+		<div class="panel-footer">
+			<xp:div style="padding: 0px 0px 20px 0px" rendered="#{javascript:!compositeData.isWidget}">
+				<xp:pager layout="Previous Group Next" partialRefresh="true"
+					id="pager1" for="repeat1" panelPosition="left" disableTheme="true">
+				</xp:pager>
+			</xp:div>
+		</div>
+	</div>
+</xp:view>

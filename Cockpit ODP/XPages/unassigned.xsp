@@ -3,5 +3,4 @@
 	xmlns:xc="http://www.ibm.com/xsp/custom">
 
 	<xc:ccLayoutBootstrapDynamic><xp:this.facets>
-	<xc:ccMetrics xp:key="facetLeft"></xc:ccMetrics>
-	<xc:ccDashboard xp:key="facetMiddle"></xc:ccDashboard></xp:this.facets></xc:ccLayoutBootstrapDynamic></xp:view>
+	<xc:ccUnassigned isWidget="false" xp:key="facetMiddle"></xc:ccUnassigned></xp:this.facets></xc:ccLayoutBootstrapDynamic></xp:view>

@@ -30,15 +30,14 @@ if(url.indexOf(".xsp")==-1){
 						<span class="icon-bar"></span>
 					</button>
 
-					<xp:link disableTheme="true" id="link2"
-						styleClass="navbar-brand" value="/index.xsp">
+					<xp:link disableTheme="true" id="link2" styleClass="navbar-brand"
+						value="/index.xsp">
 
 						<xp:image
 							style="margin-left:-12px;margin-right:10px;margin-top:-8px;overflow:hidden"
 							url="/1394393063_dashboard.png" id="image1">
 						</xp:image>
-						<xp:text value="#{javascript:@DbTitle()}"
-							style="color:rgb(255,255,255)">
+						<xp:text value="#{javascript:@DbTitle()}" style="color:rgb(255,255,255)">
 						</xp:text>
 
 					</xp:link>
@@ -49,13 +48,25 @@ if(url.indexOf(".xsp")==-1){
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 						<xp:panel tagName="li">
-							
+							<xp:this.rendered><![CDATA[#{javascript:return view.getPageName().indexOf("ticket.xsp")==-1 && acl.createDocuments}]]></xp:this.rendered>
+							<xp:link escape="true" text="Create Ticket" id="link1"
+								value="/ticket.xsp" disableTheme="true">
+								<span class="glyphicon glyphicon-plus">
+								</span>
+								&#160;
+							</xp:link>
 						</xp:panel>
 						<xp:panel tagName="li">
-							
+							<xp:this.rendered><![CDATA[#{javascript:return view.getPageName().indexOf("ticket.xsp")==-1 && database.queryAccessRoles(session.getEffectiveUserName()).contains("[Masterdata]")}]]></xp:this.rendered>
+							<xp:link escape="true" text="Masterdata" id="link3"
+								value="/master.xsp" disableTheme="true">
+								<span class="glyphicon glyphicon-briefcase">
+								</span>
+								&#160;
+							</xp:link>
 						</xp:panel>
 						<xp:panel tagName="li">
-							
+
 						</xp:panel>
 					</ul>
 
@@ -82,10 +93,9 @@ if(url.indexOf(".xsp")==-1){
 
 						<li class="dropdown">
 							<xp:link disableTheme="true" value="#" styleClass="dropdown-toggle">
-								
+
 								<xp:this.attrs>
-									<xp:attr name="data-toggle"
-										value="dropdown">
+									<xp:attr name="data-toggle" value="dropdown">
 
 									</xp:attr>
 								</xp:this.attrs>
@@ -103,8 +113,7 @@ var uploadtext = (uploads>0)?" ("+uploads.toString()+")":"";
 									<xp:this.rendered><![CDATA[#{javascript:@ClientType().equals("Web")}]]></xp:this.rendered>
 									<xp:link
 										value="#{javascript:@UserName().equals('Anonymous')?'/login.xsp':'javascript:doLogoutDialog()'}">
-										<span
-											class="glyphicon glyphicon-user">
+										<span class="glyphicon glyphicon-user">
 										</span>
 										&#160;
 										<xp:text>
@@ -152,15 +161,11 @@ var uploadtext = (uploads>0)?" ("+uploads.toString()+")":"";
 			<nav class="navbar navbar-default navbar-fixed-bottom">
 				<div class="container">
 					<ul class="nav navbar-nav" style="margin-left:-14px;">
-					<!-- 
-						<li>
-							<a
-								href="http://www.openntf.org/main.nsf/project.xsp?r=project/FileSilo"
-								target="_blank">
-								Download Cockpit
-						</a>
-						</li>
-					 -->
+						<!--
+							<li> <a
+							href="http://www.openntf.org/main.nsf/project.xsp?r=project/FileSilo"
+							target="_blank"> Download Cockpit </a> </li>
+						-->
 						<li>
 							<a href="https://github.com/zeromancer1972/Cockpit" target="_blank">
 								Cockpit on GitHub
@@ -172,12 +177,10 @@ var uploadtext = (uploads>0)?" ("+uploads.toString()+")":"";
 							<xp:link disableTheme="true">
 								<xp:this.text><![CDATA[#{javascript:app['applicationName']+", Release "+app['release']+" | © 2014 Oliver Busse, Apache License 2.0"}]]></xp:this.text>
 								<xp:this.attrs>
-									<xp:attr name="data-target"
-										value="#aboutbox">
+									<xp:attr name="data-target" value="#aboutbox">
 
 									</xp:attr>
-									<xp:attr name="data-toggle"
-										value="modal">
+									<xp:attr name="data-toggle" value="modal">
 									</xp:attr>
 								</xp:this.attrs>
 							</xp:link>

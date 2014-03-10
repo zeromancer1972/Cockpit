@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.0" replicaid="C1257C96004E0544" version="9.0" xmlns="http://www.lotus.com/dxl">
+<noteinfo noteid="2ce" sequence="2" unid="F073631940990953C1257C9600722AA3">
+<created><datetime>20140309T214700,19+01</datetime></created>
+<modified><datetime>20140309T214700,22+01</datetime></modified>
+<revised><datetime>20140309T214700,21+01</datetime></revised>
+<lastaccessed><datetime>20140309T214700,22+01</datetime></lastaccessed>
+<addedtofile><datetime>20140309T214700,20+01</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Oliver Busse/O=ulcbs</name></updatedby>
+<wassignedby><name>CN=Oliver Busse/O=ulcbs</name></wassignedby>
+<item name="$Flags"><text>gC~4;2</text></item>
+<item name="$TITLE"><text>ccOverdue.properties</text></item>
+
+
+<item name="$FileNames" sign="true"><text>ccOverdue.properties</text></item></note>

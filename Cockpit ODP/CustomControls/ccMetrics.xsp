@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+	<h4>Overall Metrics</h4>
+	<div class="row">
+		<div class="col-lg-2">
+			<xp:link escape="true" id="link1" disableTheme="true" value="/latest.xsp">
+				<span class="glyphicon glyphicon-signal"></span>
+				&#160;
+				<xp:this.text><![CDATA[#{javascript:"Ticket count: "+metrics.ticketCount}]]></xp:this.text>
+			</xp:link>
+		</div>
+		<div class="col-lg-2">
+			<xp:link escape="true" id="link4" disableTheme="true"
+				value="/unassigned.xsp">
+				<span class="glyphicon glyphicon-question-sign"></span>
+				&#160;
+				<xp:this.text><![CDATA[#{javascript:"Unassigned: "+metrics.unassignedCount}]]></xp:this.text>
+			</xp:link>
+		</div>
+		<div class="col-lg-2">
+			<xp:link escape="true" id="link2" disableTheme="true" value="/urgent.xsp">
+				<span class="glyphicon glyphicon-fire"></span>
+				&#160;
+				<xp:this.text><![CDATA[#{javascript:"Urgent: "+metrics.urgentCount}]]></xp:this.text>
+			</xp:link>
+		</div>
+		<div class="col-lg-2">
+			<xp:link escape="true" id="link3" disableTheme="true" value="/my.xsp">
+				<span class="glyphicon glyphicon-star"></span>
+				&#160;
+				<xp:this.text><![CDATA[#{javascript:"Assigned to me: "+metrics.myCount}]]></xp:this.text>
+			</xp:link>
+		</div>
+		<div class="col-lg-2 text-right">
+			<xp:link escape="true" id="link5" disableTheme="true">
+				<span class="glyphicon glyphicon-time"></span>
+				&#160;
+				<xp:this.text><![CDATA[#{javascript:"Average duration: "+metrics.duration}]]></xp:this.text>
+			</xp:link>
+		</div>
+		<div class="col-lg-2 text-right">
+			<xp:link escape="true" id="link6" disableTheme="true">
+				<span class="glyphicon glyphicon-ok"></span>
+				&#160;
+				<xp:this.text><![CDATA[#{javascript:"Solution Quota: "+metrics.quota+"%"}]]></xp:this.text>
+			</xp:link>
+		</div>
+	</div>
+</xp:view>

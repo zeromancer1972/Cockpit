@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xc="http://www.ibm.com/xsp/custom"
+	enableModifiedFlag="true"
+	modifiedMessage="You have unsaved changes. do you want to discard your changes?"
+	modifiedControl="button1">
+
+	<xp:this.data>
+		<xp:dominoDocument var="document1" formName="ticket">
+			<xp:this.postNewDocument><![CDATA[#{javascript:currentDocument.setValue("ticketID", session.evaluate("@Unique"));
+currentDocument.setValue("ticketCreated", @Now());}]]></xp:this.postNewDocument>
+			<xp:this.querySaveDocument><![CDATA[#{javascript:currentDocument.setValue("ticketUpdated", @Now());}]]></xp:this.querySaveDocument>
+		</xp:dominoDocument>
+	</xp:this.data>
+	<xp:this.navigationRules>
+		<xp:navigationRule outcome="close" viewId="/index.xsp"></xp:navigationRule>
+		<xp:navigationRule outcome="cancel" viewId="/index.xsp"></xp:navigationRule>
+		<xp:navigationRule outcome="welcome" viewId="/index.xsp"></xp:navigationRule>
+	</xp:this.navigationRules>
+	<xp:this.beforePageLoad><![CDATA[#{javascript:if(currentDocument.isEditable() && !acl.createDocuments){
+	context.redirectToPage("index");
+}}]]></xp:this.beforePageLoad>
+	<xc:ccLayoutBootstrapDynamic>
+		<xp:this.facets>
+			<xp:div xp:key="facetMiddle">
+				<xp:div styleClass="actionbar">
+					<xp:div styleClass="">
+						<xp:button id="button1"
+							rendered="#{javascript:currentDocument.isEditable()}" styleClass="btn btn-sm btn-default">
+							<span class="glyphicon glyphicon-floppy-disk">
+							</span>
+							&#160;Save
+							<xp:eventHandler event="onclick"
+								submit="true" refreshMode="partial" refreshId="theform">
+								<xp:this.action>
+									<xp:saveDocument var="document1"></xp:saveDocument>
+								</xp:this.action>
+								<xp:this.onComplete><![CDATA[XSP.partialRefreshGet("#{id:help}")]]></xp:this.onComplete>
+							</xp:eventHandler>
+						</xp:button>
+
+						<xp:button id="button2"
+							rendered="#{javascript:currentDocument.isEditable()}" styleClass="btn btn-sm btn-default">
+							<span class="glyphicon glyphicon-floppy-saved">
+							</span>
+							&#160;Save &amp; Close
+							<xp:eventHandler event="onclick" submit="true"
+								refreshMode="complete">
+								<xp:this.action>
+
+									<xp:actionGroup>
+										<xp:saveDocument var="document1"></xp:saveDocument>
+										<xp:executeScript>
+											<xp:this.script><![CDATA[#{javascript:return "close"}]]></xp:this.script>
+										</xp:executeScript>
+									</xp:actionGroup>
+								</xp:this.action>
+							</xp:eventHandler>
+						</xp:button>
+
+						<xp:button id="button3" styleClass="btn btn-sm btn-default">
+							<span class="glyphicon glyphicon-edit">
+							</span>
+							&#160;Edit
+							<xp:this.rendered><![CDATA[#{javascript:var ctx = com.ibm.domino.xsp.module.nsf.NotesContext.getCurrent()
+return ctx.isDocEditable(currentDocument.getDocument()) && !currentDocument.isEditable()}]]></xp:this.rendered>
+							<xp:eventHandler event="onclick" submit="true"
+								refreshMode="complete">
+								<xp:this.action>
+									<xp:changeDocumentMode mode="edit"></xp:changeDocumentMode>
+								</xp:this.action>
+							</xp:eventHandler>
+						</xp:button>
+
+						<xp:button id="button4" styleClass="btn btn-sm btn-default">
+							<span class="glyphicon glyphicon-chevron-left"></span>
+							&#160;
+
+							<xp:this.value><![CDATA[#{javascript:currentDocument.isEditable() ? "Cancel" : "Close"}]]></xp:this.value>
+							<xp:eventHandler event="onclick" submit="true"
+								refreshMode="complete" immediate="true">
+								<xp:this.action><![CDATA[#{javascript:return (session.getEffectiveUserName().equals("Anonymous"))?"welcome":"cancel"}]]></xp:this.action>
+							</xp:eventHandler>
+						</xp:button>
+						<xp:panel tagName="span"
+							styleClass="pull-right badge glyphicon glyphicon-cloud-upload"
+							style="font-size:24px" title="This collection is an upload">
+							<xp:this.rendered><![CDATA[#{javascript:currentDocument.getDocument().getItemValueString("fileUpload").equals("1")}]]></xp:this.rendered>
+						</xp:panel>
+					</xp:div>
+				</xp:div>
+				<xp:div styleClass="theform" id="theform">
+					<div class="form-group">
+						<xp:label value="Subject" id="label1" disableTheme="true"
+							for="ticketSubject">
+						</xp:label>
+						<xp:inputText id="ticketSubject" value="#{document1.ticketSubject}"
+							styleClass="form-control" required="true">
+							<xp:this.validators>
+								<xp:validateRequired message="Please enter a subject">
+								</xp:validateRequired>
+							</xp:this.validators>
+							<xp:this.attrs>
+								<xp:attr name="placeholder" value="Enter a meaningful subject">
+								</xp:attr>
+							</xp:this.attrs>
+						</xp:inputText>
+						<xp:message id="message1" disableTheme="true"
+							styleClass="alert alert-danger msg" for="ticketSubject">
+						</xp:message>
+					</div>
+					<div class="form-group">
+						<xp:label value="Abstract" id="label2" disableTheme="true"
+							for="ticketAbstract">
+						</xp:label>
+						<xp:inputTextarea id="ticketAbstract" value="#{document1.ticketAbstract}"
+							styleClass="form-control" required="true">
+							<xp:this.validators>
+								<xp:validateRequired message="Please enter a short abstract">
+								</xp:validateRequired>
+							</xp:this.validators>
+							<xp:this.attrs>
+								<xp:attr name="placeholder" value="Enter a short abstract">
+								</xp:attr>
+							</xp:this.attrs>
+						</xp:inputTextarea>
+						<xp:message id="message2" disableTheme="true"
+							styleClass="alert alert-danger msg" for="ticketAbstract">
+						</xp:message>
+					</div>
+				</xp:div>
+			</xp:div>
+			<xp:div xp:key="facetLeft" id="help"
+				rendered="#{javascript:!currentDocument.getDocument().isNewNote()}">
+				<h4>
+					<xp:text escape="true" id="computedField1" value="#{document1.ticketSubject}">
+					</xp:text>
+				</h4>
+				<p>
+					Created&#160;
+					<b>
+						<xp:text escape="true" id="computedField2" value="#{document1.ticketCreated}"
+							disableTheme="true">
+							<xp:this.converter>
+								<xp:convertDateTime type="both" dateStyle="short">
+								</xp:convertDateTime>
+							</xp:this.converter>
+						</xp:text>
+					</b>
+					&#160;by&#160;
+					<b>
+						<xp:text escape="true" id="computedField3" disableTheme="true">
+							<xp:this.value><![CDATA[#{javascript:@Name("[Abbreviate]", @Subset(currentDocument.getDocument().getItemValue("$UpdatedBy"),1))}]]></xp:this.value>
+						</xp:text>
+					</b>
+				</p>
+			</xp:div>
+		</xp:this.facets>
+	</xc:ccLayoutBootstrapDynamic>
+</xp:view>

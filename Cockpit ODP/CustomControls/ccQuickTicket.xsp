@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+	<xp:this.data>
+		<xp:dominoDocument var="document1" formName="ticket">
+			<xp:this.postSaveDocument><![CDATA[#{javascript:context.reloadPage()}]]></xp:this.postSaveDocument>
+			<xp:this.querySaveDocument><![CDATA[#{javascript:currentDocument.setValue("ticketID", session.evaluate("@Unique"));
+currentDocument.setValue("ticketCreated", @Now());
+currentDocument.setValue("ticketUpdated", @Now());}]]></xp:this.querySaveDocument>
+		</xp:dominoDocument>
+	</xp:this.data>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<span class="glyphicon glyphicon-send"></span>
+				&#160;QuickTicket
+			</h4>
+		</div>
+		<xp:div styleClass="panel-body" id="quickticket">
+			<div class="form-group">
+				<xp:label value="Subject" id="label1" disableTheme="true"
+					for="ticketSubject">
+				</xp:label>
+				<xp:inputText id="ticketSubject" value="#{document1.ticketSubject}"
+					styleClass="form-control" required="true">
+					<xp:this.validators>
+						<xp:validateRequired message="Please enter a subject">
+						</xp:validateRequired>
+					</xp:this.validators>
+					<xp:this.attrs>
+						<xp:attr name="placeholder" value="Enter a meaningful subject">
+						</xp:attr>
+					</xp:this.attrs>
+				</xp:inputText>
+				<xp:message id="message1" disableTheme="true"
+					styleClass="alert alert-danger msg" for="ticketSubject">
+				</xp:message>
+			</div>
+			<div class="form-group">
+				<xp:label value="Abstract" id="label2" disableTheme="true"
+					for="ticketAbstract">
+				</xp:label>
+				<xp:inputText id="ticketAbstract" value="#{document1.ticketAbstract}"
+					styleClass="form-control" required="true">
+					<xp:this.validators>
+						<xp:validateRequired message="Please enter a short abstract">
+						</xp:validateRequired>
+					</xp:this.validators>
+					<xp:this.attrs>
+						<xp:attr name="placeholder" value="Enter a short abstract">
+						</xp:attr>
+					</xp:this.attrs>
+				</xp:inputText>
+				<xp:message id="message2" disableTheme="true"
+					styleClass="alert alert-danger msg" for="ticketAbstract">
+				</xp:message>
+			</div>
+			
+		</xp:div>
+		<div class="panel-footer">
+			<div style="height:30px">
+				<span class="pull-right">
+					<xp:link escape="true" text="Create Ticket" id="link1"
+						disableTheme="true" styleClass="btn btn-sm btn-custom-green">
+						<span class="glyphicon glyphicon-save"></span>
+						&#160;
+						<xp:eventHandler event="onclick" submit="true"
+							refreshMode="partial" refreshId="quickticket">
+							<xp:this.action>
+								<xp:saveDocument var="document1"></xp:saveDocument>
+							</xp:this.action>
+						</xp:eventHandler>
+					</xp:link>
+				</span>
+			</div>
+		</div>
+	</div>
+</xp:view>

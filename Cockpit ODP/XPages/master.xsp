@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xc="http://www.ibm.com/xsp/custom">
+
+	<xp:this.beforePageLoad><![CDATA[#{javascript:if(!database.queryAccessRoles(session.getEffectiveUserName()).contains("[Masterdata]")){
+	context.redirectToPage("index");
+}}]]></xp:this.beforePageLoad>
+	<xc:ccLayoutBootstrapDynamic>
+		<xp:this.facets>
+			<xc:ccMaster xp:key="facetMiddle"></xc:ccMaster>
+			<xp:div xp:key="facetLeft">
+				<h4>Manage Masterdata</h4>
+				<p>Here you can manage your customers and projects</p>
+			</xp:div>
+		</xp:this.facets>
+	</xc:ccLayoutBootstrapDynamic>
+</xp:view>

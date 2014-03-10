@@ -4,4 +4,4 @@
 
 	<xc:ccLayoutBootstrapDynamic><xp:this.facets>
 	<xc:ccMetrics xp:key="facetLeft"></xc:ccMetrics>
-	<xc:ccDashboard xp:key="facetMiddle"></xc:ccDashboard></xp:this.facets></xc:ccLayoutBootstrapDynamic></xp:view>
+	<xc:ccLatest xp:key="facetMiddle"></xc:ccLatest></xp:this.facets></xc:ccLayoutBootstrapDynamic></xp:view>

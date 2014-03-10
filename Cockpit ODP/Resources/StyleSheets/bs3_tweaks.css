@@ -15,12 +15,19 @@
 	background-color: #E56953;
 	margin-bottom: 20px;
 	color: #fff;
-	min-height: 160px;
+	min-height: 120px;
 	padding-top: 0px;
+}
+
+.pagehelp a:link,.pagehelp a:active,.pagehelp a:visited {
+	color: #fff;
 }
 
 .msg {
 	display: block;
+	margin-top: 3px;
+	font-size: 0.9em;
+	padding: 5px;
 }
 
 .actionbar .btn {
@@ -37,6 +44,19 @@
 	{
 	background-color: #C4DF4D;
 	border-color: #C4DF4D;
+	color: white;
+}
+
+.btn-custom-orange {
+	background-color: #E56953;
+	color: white;
+	border-color: #E56953;
+}
+
+.btn-custom-orange:hover,.btn-custom-orange:focus,.btn-custom-orange:active
+	{
+	background-color: #ed8876;
+	border-color: #E56953;
 	color: white;
 }
 
@@ -79,7 +99,7 @@ th {
 	font-weight: bold;
 }
 
-.tiny td {
+.tiny th,.tiny td {
 	font-size: 0.8em;
 }
 
