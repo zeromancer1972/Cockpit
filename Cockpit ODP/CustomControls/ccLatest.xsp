@@ -22,7 +22,7 @@
 			</colgroup>
 			<thead>
 				<tr>
-					<th>Created</th>
+					<th>Updated</th>
 					<th>Subject</th>
 					<th>Customer</th>
 				</tr>
@@ -35,13 +35,14 @@
 						<td>
 							<span class="glyphicon glyphicon-time"></span>
 							&#160;
-							<xp:text escape="true" id="computedField1"
-								value="#{doc.ticketCreated}">
+							<xp:text escape="true"
+								id="computedField1">
 								<xp:this.converter>
 									<xp:convertDateTime
 										pattern="MM/dd/yyyy HH:mm">
 									</xp:convertDateTime>
 								</xp:this.converter>
+								<xp:this.value><![CDATA[#{javascript:doc.getDocument().getItemValue("ticketUpdated").elementAt(0).toJavaDate()}]]></xp:this.value>
 							</xp:text>
 						</td>
 						<td>

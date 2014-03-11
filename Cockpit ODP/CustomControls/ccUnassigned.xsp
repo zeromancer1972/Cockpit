@@ -17,14 +17,12 @@
 			class="panel-body table table-striped table-condensed table-hover #{javascript: return compositeData.isWidget?'tiny':''}">
 			<colgroup>
 				<col width="30%" />
-				<col width="40%" />
-				<col width="30%" />
+				<col width="70%" />				
 			</colgroup>
 			<thead>
 				<tr>
 					<th>Created</th>
 					<th>Subject</th>
-					<th>Abstract</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -48,21 +46,6 @@
 							<xp:link escape="true" id="link1"
 								disableTheme="true">
 								<xp:this.text><![CDATA[#{javascript:doc.getDocument().getItemValueString("ticketSubject")}]]></xp:this.text>
-								<xp:eventHandler event="onclick"
-									submit="true" refreshMode="complete" immediate="true">
-									<xp:this.action>
-										<xp:openPage name="/ticket.xsp"
-											target="editDocument"
-											documentId="#{javascript:doc.getDocument().getUniversalID()}">
-										</xp:openPage>
-									</xp:this.action>
-								</xp:eventHandler>
-							</xp:link>
-						</td>
-						<td>
-							<xp:link escape="true" id="link2"
-								disableTheme="true">
-								<xp:this.text><![CDATA[#{javascript:doc.getDocument().getItemValueString("ticketAbstract")}]]></xp:this.text>
 								<xp:eventHandler event="onclick"
 									submit="true" refreshMode="complete" immediate="true">
 									<xp:this.action>

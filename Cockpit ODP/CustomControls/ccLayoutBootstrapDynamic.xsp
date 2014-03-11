@@ -58,9 +58,11 @@ if(url.indexOf(".xsp")==-1){
 						</xp:panel>
 						<xp:panel tagName="li">
 							<xp:this.rendered><![CDATA[#{javascript:return view.getPageName().indexOf("ticket.xsp")==-1 && database.queryAccessRoles(session.getEffectiveUserName()).contains("[Masterdata]")}]]></xp:this.rendered>
-							<xp:link escape="true" text="Masterdata" id="link3"
-								value="/master.xsp" disableTheme="true">
-								<span class="glyphicon glyphicon-briefcase">
+							<xp:this.styleClass><![CDATA[#{javascript:return view.getPageName().indexOf("master")!=-1?"active":""}]]></xp:this.styleClass>
+							<xp:link escape="true" text="Masterdata"
+								id="link3" value="/master.xsp" disableTheme="true">
+								<span
+									class="glyphicon glyphicon-briefcase">
 								</span>
 								&#160;
 							</xp:link>
