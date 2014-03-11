@@ -21,9 +21,9 @@ public class Metrics implements Serializable {
 		// calc all the values
 		try {
 			this.ticketCount = ExtLibUtil.getCurrentDatabase().getView("tickets").getAllEntries().getCount();
-			this.urgentCount = ExtLibUtil.getCurrentDatabase().search("SELECT ticketPriority=\"1\" & (ticketStatus!=\"90\" | ticketStatus!=\"99\")").getCount();
-			this.solvedCount = ExtLibUtil.getCurrentDatabase().search("SELECT ticketStatus=\"90\" | ticketStatus=\"99\"").getCount();
-			this.unassignedCount = ExtLibUtil.getCurrentDatabase().search("SELECT ticketStatus=\"\" | ticketResponsible=\"\"").getCount();
+			this.urgentCount = ExtLibUtil.getCurrentDatabase().search("SELECT form=\"ticket\" & ticketPriority=\"1\" & (ticketStatus!=\"90\" | ticketStatus!=\"99\")").getCount();
+			this.solvedCount = ExtLibUtil.getCurrentDatabase().search("SELECT form=\"ticket\" & (ticketStatus=\"90\" | ticketStatus=\"99\")").getCount();
+			this.unassignedCount = ExtLibUtil.getCurrentDatabase().search("SELECT form=\"ticket\" & (ticketStatus=\"\" | ticketResponsible=\"\") & !(ticketStatus=\"90\" | ticketStatus=\"99\")").getCount();
 			this.myCount = ExtLibUtil.getCurrentDatabase().getView("ticketsByResponsible").getAllEntriesByKey(ExtLibUtil.getCurrentSession().getEffectiveUserName()).getCount();
 			calcDuration();
 			calcQuota();

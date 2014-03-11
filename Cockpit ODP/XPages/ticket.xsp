@@ -9,7 +9,8 @@
 			<xp:this.postNewDocument><![CDATA[#{javascript:currentDocument.setValue("ticketID", session.evaluate("@Unique"));
 currentDocument.setValue("ticketCreated", @Now());}]]></xp:this.postNewDocument>
 			<xp:this.querySaveDocument><![CDATA[#{javascript:currentDocument.setValue("ticketUpdated", @Now());}]]></xp:this.querySaveDocument>
-			<xp:this.postSaveDocument><![CDATA[#{javascript:history.addHistory(currentDocument.getDocument(), false)}]]></xp:this.postSaveDocument></xp:dominoDocument>
+			<xp:this.postSaveDocument><![CDATA[#{javascript:history.addHistory(currentDocument.getDocument(), false)}]]></xp:this.postSaveDocument>
+		</xp:dominoDocument>
 	</xp:this.data>
 	<xp:this.navigationRules>
 		<xp:navigationRule outcome="close" viewId="/index.xsp"></xp:navigationRule>
@@ -155,16 +156,26 @@ return ctx.isDocEditable(currentDocument.getDocument()) && !currentDocument.isEd
 						</xp:message>
 					</div>
 					<div class="form-group">
-					<xp:label value="Priority" id="label4"
-						for="comboBox2">
-					</xp:label>
-					<xp:comboBox id="comboBox2"
-						value="#{document1.ticketPriority}" styleClass="form-control">
-						<xp:selectItems>
-							<xp:this.value><![CDATA[#{javascript:return ["","urgent|1","normal|2","low|3"];
+						<xp:label value="Priority" id="label4" for="comboBox2">
+						</xp:label>
+						<xp:comboBox id="comboBox2" value="#{document1.ticketPriority}"
+							styleClass="form-control">
+							<xp:selectItems>
+								<xp:this.value><![CDATA[#{javascript:return ["","urgent|1","normal|2","low|3"];
 }]]></xp:this.value>
-						</xp:selectItems>
-					</xp:comboBox>
+							</xp:selectItems>
+						</xp:comboBox>
+					</div>
+					<div class="form-group">
+						<xp:label value="Status" id="label5" for="comboBox3">
+						</xp:label>
+						<xp:comboBox id="comboBox3" value="#{document1.ticketStatus}"
+							styleClass="form-control">
+							<xp:selectItems>
+								<xp:this.value><![CDATA[#{javascript:return ["","open|1","investigating|10","work in progress|20", "solved|90", "closed|99"];
+}]]></xp:this.value>
+							</xp:selectItems>
+						</xp:comboBox>
 					</div>
 				</xp:div>
 				<!-- History -->

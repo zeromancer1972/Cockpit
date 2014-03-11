@@ -32,7 +32,7 @@ public class History implements Serializable {
 	}
 
 	public void addHistory(Document doc, String msg) {
-		SimpleDateFormat formater = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss", Locale.ENGLISH);
+		SimpleDateFormat formater = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss a", Locale.ENGLISH);
 		String now = formater.format(new Date());
 		Name user = null;
 		Item it = null;
