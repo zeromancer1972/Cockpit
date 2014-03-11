@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <note class='form' xmlns='http://www.lotus.com/dxl' version='9.0' maintenanceversion='1.0'
  replicaid='C1257C96004E0544'>
-<noteinfo noteid='332' unid='87085CC67BD21717C1257C96007BF759' sequence='2'>
+<noteinfo noteid='332' unid='87085CC67BD21717C1257C96007BF759' sequence='4'>
 <created><datetime>20140309T233402,49+01</datetime></created>
-<modified><datetime>20140310T011139,45+01</datetime></modified>
-<revised><datetime>20140310T011139,44+01</datetime></revised>
-<lastaccessed><datetime>20140310T011139,45+01</datetime></lastaccessed>
+<modified><datetime>20140311T185947,23+01</datetime></modified>
+<revised><datetime>20140311T185947,18+01</datetime></revised>
+<lastaccessed><datetime>20140311T185947,23+01</datetime></lastaccessed>
 <addedtofile><datetime>20140309T233402,73+01</datetime></addedtofile></noteinfo>
 <updatedby><name>CN=Oliver Busse/O=ulcbs</name></updatedby>
 <wassignedby><name>CN=Oliver Busse/O=ulcbs</name></wassignedby>
@@ -22,9 +22,68 @@ hhgBAIAAAAAAgAAAAQABAP///wAQAAAA
 <item name='$Flags'><text>CD</text></item>
 <item name='$DesignerVersion'><text>8.5.3</text></item>
 <item name='$$ScriptName' summary='false' sign='true'><text>customer</text></item>
+<item name='customerName' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='customerName2' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='customerStreet' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='customerId' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='customerZIP' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='customerCity' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='customerEmail' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='customerPhone' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='customerDescription' placeholder='true'>
+<rawitemdata type='0'>
+</rawitemdata></item>
+<item name='$Fields'><textlist><text>customerDescription</text><text>customerPhone</text><text
+>customerEmail</text><text>customerCity</text><text>customerZIP</text><text
+>customerId</text><text>customerStreet</text><text>customerName2</text><text
+>customerName</text></textlist></item>
 <item name='$Body' sign='true'>
 <rawitemdata type='1'>
 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
-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
+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
 </rawitemdata></item></note>
 

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xc="http://www.ibm.com/xsp/custom">
+
+	<xp:this.navigationRules>
+		<xp:navigationRule outcome="close" viewId="/master.xsp"></xp:navigationRule>
+	</xp:this.navigationRules>
+	<xc:ccLayoutBootstrapDynamic>
+		<xp:this.facets>
+			<xp:div xp:key="facetLeft">
+				<h4>Customer</h4>
+				<p></p>
+			</xp:div>
+			<xc:ccCustomer xp:key="facetMiddle"></xc:ccCustomer>
+		</xp:this.facets>
+	</xc:ccLayoutBootstrapDynamic>
+</xp:view>

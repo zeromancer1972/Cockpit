@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.0" replicaid="C1257C96004E0544" version="9.0" xmlns="http://www.lotus.com/dxl">
+<noteinfo noteid="3a6" sequence="2" unid="F67C65E7645894B0C1257C98006A4605">
+<created><datetime>20140311T202047,41+01</datetime></created>
+<modified><datetime>20140311T202047,43+01</datetime></modified>
+<revised><datetime>20140311T202047,42+01</datetime></revised>
+<lastaccessed><datetime>20140311T202047,43+01</datetime></lastaccessed>
+<addedtofile><datetime>20140311T202047,41+01</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Oliver Busse/O=ulcbs</name></updatedby>
+<wassignedby><name>CN=Oliver Busse/O=ulcbs</name></wassignedby>
+<item name="$Flags"><text>gC~4;2</text></item>
+<item name="$TITLE"><text>ccChevron.properties</text></item>
+
+
+<item name="$FileNames" sign="true"><text>ccChevron.properties</text></item></note>

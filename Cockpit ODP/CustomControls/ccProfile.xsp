@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xe="http://www.ibm.com/xsp/coreex">
+	<xp:div styleClass="actionbar">
+		<xp:div styleClass="">
+			<xp:button value="Save" id="button1"
+				rendered="#{javascript:currentDocument.isEditable()}" styleClass="btn btn-custom-green">
+				<xp:eventHandler event="onclick" submit="true"
+					refreshMode="complete">
+					<xp:this.action>
+						<xp:saveDocument var="document1"></xp:saveDocument>
+					</xp:this.action>
+				</xp:eventHandler>
+			</xp:button>
+
+			<xp:button id="button2" rendered="#{javascript:currentDocument.isEditable()}"
+				styleClass="btn btn-custom-green">
+				<xp:this.value><![CDATA[Save & close]]></xp:this.value>
+				<xp:eventHandler event="onclick" submit="true"
+					refreshMode="complete">
+					<xp:this.action>
+
+						<xp:actionGroup>
+							<xp:saveDocument var="document1"></xp:saveDocument>
+							<xp:executeScript>
+								<xp:this.script><![CDATA[#{javascript:return "close"}]]></xp:this.script>
+							</xp:executeScript>
+						</xp:actionGroup>
+					</xp:this.action>
+				</xp:eventHandler>
+			</xp:button>
+
+			<xp:button value="Edit" id="button3" styleClass="btn btn-default">
+
+				<xp:this.rendered><![CDATA[#{javascript:var ctx = com.ibm.domino.xsp.module.nsf.NotesContext.getCurrent()
+return ctx.isDocEditable(currentDocument.getDocument()) && !currentDocument.isEditable()}]]></xp:this.rendered>
+				<xp:eventHandler event="onclick" submit="true"
+					refreshMode="complete">
+					<xp:this.action>
+						<xp:changeDocumentMode mode="edit"></xp:changeDocumentMode>
+					</xp:this.action>
+				</xp:eventHandler>
+			</xp:button>
+
+			<xp:button id="button4" styleClass="btn btn-warning">
+				<xp:this.value><![CDATA[#{javascript:currentDocument.isEditable() ? "Cancel" : "Close"}]]></xp:this.value>
+				<xp:eventHandler event="onclick" submit="true"
+					refreshMode="complete" immediate="true">
+					<xp:this.action><![CDATA[#{javascript:return "close";}]]></xp:this.action>
+				</xp:eventHandler>
+			</xp:button>
+		</xp:div>
+	</xp:div>
+
+</xp:view>

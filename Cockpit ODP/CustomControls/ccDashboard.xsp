@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xc="http://www.ibm.com/xsp/custom">
 	<div class="row">
+		<div class="col-lg-12">
+			<xc:ccMyTickets isWidget="true"></xc:ccMyTickets>
+		</div>
+	</div>
+	<div class="row">
 		<div class="col-lg-6">
 			<xc:ccLatest isWidget="true"></xc:ccLatest>
 		</div>
 		<div class="col-lg-6">
-			<xc:ccMyTickets isWidget="true"></xc:ccMyTickets>
+			<xc:ccUnassigned isWidget="true"></xc:ccUnassigned>
 		</div>
 	</div>
 	<div class="row">

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+	<xp:div styleClass="actionbar">
+		<xp:div styleClass="">
+			<xp:button id="button1" rendered="#{javascript:currentDocument.isEditable()}"
+				styleClass="btn btn-sm btn-default">
+				<span class="glyphicon glyphicon-floppy-disk">
+				</span>
+				&#160;Save
+				<xp:eventHandler event="onclick" submit="true">
+					<xp:this.action>
+						<xp:saveDocument var="document1"></xp:saveDocument>
+					</xp:this.action>
+					<xp:this.onComplete><![CDATA[XSP.partialRefreshGet("#{id:help}")]]></xp:this.onComplete>
+				</xp:eventHandler>
+			</xp:button>
+
+			<xp:button id="button2" rendered="#{javascript:currentDocument.isEditable()}"
+				styleClass="btn btn-sm btn-default">
+				<span class="glyphicon glyphicon-floppy-saved">
+				</span>
+				&#160;Save &amp; Close
+				<xp:eventHandler event="onclick" submit="true"
+					refreshMode="complete">
+					<xp:this.action>
+
+						<xp:actionGroup>
+							<xp:saveDocument var="document1"></xp:saveDocument>
+							<xp:executeScript>
+								<xp:this.script><![CDATA[#{javascript:return "close"}]]></xp:this.script>
+							</xp:executeScript>
+						</xp:actionGroup>
+					</xp:this.action>
+				</xp:eventHandler>
+			</xp:button>
+
+			<xp:button id="button3" styleClass="btn btn-sm btn-default">
+				<span class="glyphicon glyphicon-edit">
+				</span>
+				&#160;Edit
+				<xp:this.rendered><![CDATA[#{javascript:var ctx = com.ibm.domino.xsp.module.nsf.NotesContext.getCurrent()
+return ctx.isDocEditable(currentDocument.getDocument()) && !currentDocument.isEditable()}]]></xp:this.rendered>
+				<xp:eventHandler event="onclick" submit="true"
+					refreshMode="complete">
+					<xp:this.action>
+						<xp:changeDocumentMode mode="edit"></xp:changeDocumentMode>
+					</xp:this.action>
+				</xp:eventHandler>
+			</xp:button>
+
+			<xp:button id="button4" styleClass="btn btn-sm btn-default">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+				&#160;
+
+				<xp:this.value><![CDATA[#{javascript:currentDocument.isEditable() ? "Cancel" : "Close"}]]></xp:this.value>
+				<xp:eventHandler event="onclick" submit="true"
+					refreshMode="complete" immediate="true">
+					<xp:this.action><![CDATA[#{javascript:return "close"}]]></xp:this.action>
+				</xp:eventHandler>
+			</xp:button>
+			<xp:panel tagName="span"
+				styleClass="pull-right badge glyphicon glyphicon-cloud-upload"
+				style="font-size:24px" title="This collection is an upload">
+				<xp:this.rendered><![CDATA[#{javascript:currentDocument.getDocument().getItemValueString("fileUpload").equals("1")}]]></xp:this.rendered>
+			</xp:panel>
+		</xp:div>
+	</xp:div>
+</xp:view>

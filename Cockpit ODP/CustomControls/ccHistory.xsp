@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+	<pre>
+		<xp:repeat id="repeat1" rows="30" disableOutputTag="true"
+			value="#{javascript:currentDocument.getDocument().getItemValue(compositeData.historyItem)}"
+			var="entry">
+
+			<xp:label value="#{javascript:entry}" id="label1"
+				disableTheme="true">
+			</xp:label>
+			<br />
+
+		</xp:repeat>
+	</pre>
+</xp:view>

@@ -6,5 +6,17 @@
 			<xp:this.documentId><![CDATA[#{javascript:@DbLookup(@DbName(), "profiles", "profile", "Form", "[RETURNDOCUMENTUNIQUEID]")}]]></xp:this.documentId>
 		</xp:dominoDocument>
 	</xp:this.data>
-	<xc:ccLayoutBootstrapDynamic></xc:ccLayoutBootstrapDynamic>
+	<xp:this.navigationRules>
+		<xp:navigationRule outcome="close" viewId="/index.xsp"></xp:navigationRule>
+	</xp:this.navigationRules>
+	<xc:ccLayoutBootstrapDynamic>
+		<xp:this.facets>
+			<xp:div xp:key="facetLeft">
+				<h4>Application Settings</h4>
+				<p>Be careful what you set here as this is the main setting
+					profile for the whole application!</p>
+			</xp:div>
+			<xc:ccProfile xp:key="facetMiddle"></xc:ccProfile>
+		</xp:this.facets>
+	</xc:ccLayoutBootstrapDynamic>
 </xp:view>

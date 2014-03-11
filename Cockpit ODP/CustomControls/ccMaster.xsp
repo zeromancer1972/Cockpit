@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xe="http://www.ibm.com/xsp/coreex">
 
-	<xp:this.beforePageLoad><![CDATA[#{javascript:sessionScope.put("page", "customers")}]]></xp:this.beforePageLoad>
+	<xp:this.beforePageLoad><![CDATA[#{javascript:if(sessionScope.get("page")==null){
+	sessionScope.put("page", "customers");
+}}]]></xp:this.beforePageLoad>
 	<xp:div styleClass="row" id="master">
 		<xp:div styleClass="col-lg-2" disableTheme="true">
 			<ul class="nav nav-pills nav-stacked">
@@ -35,7 +37,71 @@ sessionScope.put("page", "projects");}]]></xp:this.action>
 				<xe:this.defaultFacet><![CDATA[#{javascript:var pagename = sessionScope.get("page");
 return pagename!=null && pagename!="" ? pagename : "customers"}]]></xe:this.defaultFacet>
 				<xp:this.facets>
-					<xp:panel xp:key="customers">customers</xp:panel>
+					<xp:panel xp:key="customers">
+						<xp:div styleClass="actionbar">
+							<xp:button value="Create Customer"
+								id="button1" styleClass="btn btn-custom-green">
+								<xp:eventHandler event="onclick"
+									submit="true" refreshMode="complete">
+									<xp:this.action>
+										<xp:openPage
+											name="/customer.xsp" target="newDocument">
+										</xp:openPage>
+									</xp:this.action>
+								</xp:eventHandler>
+							</xp:button>
+						</xp:div>
+						<xp:viewPanel rows="30" id="viewPanel1" viewStyle="width:100%">
+							<xp:this.facets>
+								<xp:pager partialRefresh="true"
+									layout="Previous Group Next" xp:key="headerPager"
+									id="pager1">
+								</xp:pager>
+							</xp:this.facets>
+							<xp:this.data>
+								<xp:dominoView var="view1"
+									viewName="customersByName">
+								</xp:dominoView>
+							</xp:this.data>
+							<xp:viewColumn columnName="customerName"
+								id="viewColumn1" displayAs="link" openDocAsReadonly="true">
+								<xp:viewColumnHeader value="Name"
+									id="viewColumnHeader1">
+								</xp:viewColumnHeader>
+							</xp:viewColumn>
+							
+							<xp:viewColumn columnName="customerStreet"
+								id="viewColumn3" displayAs="link" openDocAsReadonly="true">
+								<xp:viewColumnHeader value="Street"
+									id="viewColumnHeader3">
+								</xp:viewColumnHeader>
+							</xp:viewColumn>
+							<xp:viewColumn columnName="customerZIP"
+								id="viewColumn4" displayAs="link" openDocAsReadonly="true">
+								<xp:viewColumnHeader value="ZIP"
+									id="viewColumnHeader4">
+								</xp:viewColumnHeader>
+							</xp:viewColumn>
+							<xp:viewColumn columnName="customerCity"
+								id="viewColumn5" displayAs="link" openDocAsReadonly="true">
+								<xp:viewColumnHeader value="City"
+									id="viewColumnHeader5">
+								</xp:viewColumnHeader>
+							</xp:viewColumn>
+							<xp:viewColumn columnName="customerEmail"
+								id="viewColumn6" displayAs="link" openDocAsReadonly="true">
+								<xp:viewColumnHeader value="E-Mail"
+									id="viewColumnHeader6">
+								</xp:viewColumnHeader>
+							</xp:viewColumn>
+							<xp:viewColumn columnName="customerPhone"
+								id="viewColumn7" displayAs="link" openDocAsReadonly="true">
+								<xp:viewColumnHeader value="Phone"
+									id="viewColumnHeader7">
+								</xp:viewColumnHeader>
+							</xp:viewColumn>
+						</xp:viewPanel>
+					</xp:panel>
 					<xp:panel xp:key="projects">projects</xp:panel>
 				</xp:this.facets>
 			</xe:dynamicContent>

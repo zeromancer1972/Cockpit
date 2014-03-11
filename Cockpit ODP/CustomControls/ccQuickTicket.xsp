@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xp:view xmlns:xp="http://www.ibm.com/xsp/core"
-	rendered="#{javascript:acl.createDocuments}">
+	rendered="#{javascript:acl.createDocuments}"
+	xmlns:xc="http://www.ibm.com/xsp/custom">
 	<xp:this.data>
 		<xp:dominoDocument var="document1" formName="ticket">
-			<xp:this.postSaveDocument><![CDATA[#{javascript:context.reloadPage()}]]></xp:this.postSaveDocument>
+			<xp:this.postSaveDocument><![CDATA[#{javascript:history.addHistory(currentDocument.getDocument(), true)
+context.reloadPage()}]]></xp:this.postSaveDocument>
 			<xp:this.querySaveDocument><![CDATA[#{javascript:currentDocument.setValue("ticketID", session.evaluate("@Unique"));
 currentDocument.setValue("ticketCreated", @Now());
 currentDocument.setValue("ticketUpdated", @Now());}]]></xp:this.querySaveDocument>
@@ -15,8 +17,38 @@ currentDocument.setValue("ticketUpdated", @Now());}]]></xp:this.querySaveDocumen
 				<span class="glyphicon glyphicon-send"></span>
 				&#160;QuickTicket
 			</h4>
+
+			<xc:ccChevron></xc:ccChevron>
 		</div>
 		<xp:div styleClass="panel-body" id="quickticket">
+			<div class="form-group">
+				<xp:label value="Customer" id="label3" for="comboBox1"
+					disableTheme="true">
+				</xp:label>
+				<xp:comboBox id="comboBox1" styleClass="form-control"
+					value="#{document1.ticketCustomerID}">
+
+					<xp:this.validators>
+						<xp:validateRequired
+							message="Please select a customer from the list">
+						</xp:validateRequired>
+					</xp:this.validators>
+					<xp:this.attrs>
+						<xp:attr name="placeholder"
+							value="Select a customer from the list">
+						</xp:attr>
+					</xp:this.attrs>
+					<xp:selectItems>
+						<xp:this.value><![CDATA[#{javascript:""}]]></xp:this.value>
+					</xp:selectItems>
+					<xp:selectItems>
+						<xp:this.value><![CDATA[#{javascript:@DbColumn(@DbName(),"customersNameId",1)}]]></xp:this.value>
+					</xp:selectItems>
+				</xp:comboBox>
+				<xp:message id="message3" disableTheme="true"
+					styleClass="alert alert-danger msg" for="comboBox1">
+				</xp:message>
+			</div>
 			<div class="form-group">
 				<xp:label value="Subject" id="label1"
 					disableTheme="true" for="ticketSubject">
@@ -66,9 +98,9 @@ currentDocument.setValue("ticketUpdated", @Now());}]]></xp:this.querySaveDocumen
 		<div class="panel-footer">
 			<div style="height:30px">
 				<span class="pull-right">
-					<xp:link escape="true" text="Create Ticket"
+					<xp:link escape="true" text="Create QuickTicket"
 						id="link1" disableTheme="true"
-						styleClass="btn btn-sm btn-custom-green">
+						styleClass="btn btn-sm btn-custom-orange">
 						<span class="glyphicon glyphicon-save"></span>
 						&#160;
 						<xp:eventHandler event="onclick" submit="true"

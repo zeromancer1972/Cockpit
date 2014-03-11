@@ -42,7 +42,7 @@
 			<xp:link escape="true" id="link6" disableTheme="true">
 				<span class="glyphicon glyphicon-ok"></span>
 				&#160;
-				<xp:this.text><![CDATA[#{javascript:"Solution Quota: "+metrics.quota+"%"}]]></xp:this.text>
+				<xp:this.text><![CDATA[#{javascript:"Solution Quota: "+ @Round(metrics.quota)+"%"}]]></xp:this.text>
 			</xp:link>
 		</div>
 	</div>

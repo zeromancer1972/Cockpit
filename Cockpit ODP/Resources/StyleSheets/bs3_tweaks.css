@@ -65,7 +65,7 @@
 }
 
 .actionbar { /*border-bottom: solid 1px #ccc;*/
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	padding-bottom: 10px;
 }
 
@@ -100,7 +100,7 @@ th {
 }
 
 .tiny th,.tiny td {
-	font-size: 0.8em;
+	font-size: 0.9em;
 }
 
 .clickable {

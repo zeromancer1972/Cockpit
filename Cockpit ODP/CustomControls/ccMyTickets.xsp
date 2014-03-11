@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xc="http://www.ibm.com/xsp/custom">
 	<xp:this.data>
 		<xp:dominoView var="view1" viewName="ticketsByResponsible"
 			keys="#{javascript:session.getEffectiveUserName()}" keysExactMatch="true">
@@ -12,6 +12,8 @@
 				<span class="glyphicon glyphicon-star"></span>
 				&#160;My Tickets
 			</h4>
+
+			<xc:ccChevron></xc:ccChevron>
 		</div>
 		<table
 			class="panel-body table table-striped table-condensed table-hover #{javascript: return compositeData.isWidget?'tiny':''}">
@@ -35,11 +37,9 @@
 						<td>
 							<span class="glyphicon glyphicon-time"></span>
 							&#160;
-							<xp:text escape="true" id="computedField1"
-								value="#{doc.ticketUpdated}">
+							<xp:text escape="true" id="computedField1" value="#{doc.ticketUpdated}">
 								<xp:this.converter>
-									<xp:convertDateTime
-										pattern="MM/dd/yyyy HH:mm">
+									<xp:convertDateTime pattern="MM/dd/yyyy HH:mm">
 									</xp:convertDateTime>
 								</xp:this.converter>
 							</xp:text>
@@ -50,7 +50,7 @@
 								<xp:eventHandler event="onclick" submit="true"
 									refreshMode="complete" immediate="true">
 									<xp:this.action>
-										<xp:openPage name="/ticket.xsp" target="openDocument"
+										<xp:openPage name="/ticket.xsp" target="editDocument"
 											documentId="#{javascript:doc.getDocument().getUniversalID()}">
 										</xp:openPage>
 									</xp:this.action>
@@ -58,9 +58,17 @@
 							</xp:link>
 						</td>
 						<td>
-							<xp:text escape="true" id="computedField2">
-								<xp:this.value><![CDATA[#{javascript:doc.getDocument().getItemValueString("ticketAbstract")}]]></xp:this.value>
-							</xp:text>
+							<xp:link escape="true" id="link2" disableTheme="true">
+								<xp:this.text><![CDATA[#{javascript:doc.getDocument().getItemValueString("ticketAbstract")}]]></xp:this.text>
+								<xp:eventHandler event="onclick" submit="true"
+									refreshMode="complete" immediate="true">
+									<xp:this.action>
+										<xp:openPage name="/ticket.xsp" target="editDocument"
+											documentId="#{javascript:doc.getDocument().getUniversalID()}">
+										</xp:openPage>
+									</xp:this.action>
+								</xp:eventHandler>
+							</xp:link>
 						</td>
 					</tr>
 				</xp:repeat>

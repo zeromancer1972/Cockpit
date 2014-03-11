@@ -9,7 +9,7 @@
 			<xp:this.postNewDocument><![CDATA[#{javascript:currentDocument.setValue("ticketID", session.evaluate("@Unique"));
 currentDocument.setValue("ticketCreated", @Now());}]]></xp:this.postNewDocument>
 			<xp:this.querySaveDocument><![CDATA[#{javascript:currentDocument.setValue("ticketUpdated", @Now());}]]></xp:this.querySaveDocument>
-		</xp:dominoDocument>
+			<xp:this.postSaveDocument><![CDATA[#{javascript:history.addHistory(currentDocument.getDocument(), false)}]]></xp:this.postSaveDocument></xp:dominoDocument>
 	</xp:this.data>
 	<xp:this.navigationRules>
 		<xp:navigationRule outcome="close" viewId="/index.xsp"></xp:navigationRule>
@@ -29,8 +29,8 @@ currentDocument.setValue("ticketCreated", @Now());}]]></xp:this.postNewDocument>
 							<span class="glyphicon glyphicon-floppy-disk">
 							</span>
 							&#160;Save
-							<xp:eventHandler event="onclick"
-								submit="true" refreshMode="partial" refreshId="theform">
+							<xp:eventHandler event="onclick" submit="true"
+								refreshMode="partial" refreshId="theform">
 								<xp:this.action>
 									<xp:saveDocument var="document1"></xp:saveDocument>
 								</xp:this.action>
@@ -90,6 +90,32 @@ return ctx.isDocEditable(currentDocument.getDocument()) && !currentDocument.isEd
 				</xp:div>
 				<xp:div styleClass="theform" id="theform">
 					<div class="form-group">
+						<xp:label value="Customer" id="label3" for="comboBox1"
+							disableTheme="true">
+						</xp:label>
+						<xp:comboBox id="comboBox1" styleClass="form-control"
+							value="#{document1.ticketCustomerID}">
+
+							<xp:this.validators>
+								<xp:validateRequired message="Please select a customer from the list">
+								</xp:validateRequired>
+							</xp:this.validators>
+							<xp:this.attrs>
+								<xp:attr name="placeholder" value="Select a customer from the list">
+								</xp:attr>
+							</xp:this.attrs>
+							<xp:selectItems>
+								<xp:this.value><![CDATA[#{javascript:""}]]></xp:this.value>
+							</xp:selectItems>
+							<xp:selectItems>
+								<xp:this.value><![CDATA[#{javascript:@DbColumn(@DbName(),"customersNameId",1)}]]></xp:this.value>
+							</xp:selectItems>
+						</xp:comboBox>
+						<xp:message id="message3" disableTheme="true"
+							styleClass="alert alert-danger msg" for="comboBox1">
+						</xp:message>
+					</div>
+					<div class="form-group">
 						<xp:label value="Subject" id="label1" disableTheme="true"
 							for="ticketSubject">
 						</xp:label>
@@ -112,8 +138,9 @@ return ctx.isDocEditable(currentDocument.getDocument()) && !currentDocument.isEd
 						<xp:label value="Abstract" id="label2" disableTheme="true"
 							for="ticketAbstract">
 						</xp:label>
-						<xp:inputTextarea id="ticketAbstract" value="#{document1.ticketAbstract}"
-							styleClass="form-control" required="true">
+						<xp:inputTextarea id="ticketAbstract"
+							value="#{document1.ticketAbstract}" styleClass="form-control"
+							required="true">
 							<xp:this.validators>
 								<xp:validateRequired message="Please enter a short abstract">
 								</xp:validateRequired>
@@ -128,6 +155,8 @@ return ctx.isDocEditable(currentDocument.getDocument()) && !currentDocument.isEd
 						</xp:message>
 					</div>
 				</xp:div>
+				<!-- History -->
+				<xc:ccHistory historyItem="ticketHistory"></xc:ccHistory>
 			</xp:div>
 			<xp:div xp:key="facetLeft" id="help"
 				rendered="#{javascript:!currentDocument.getDocument().isNewNote()}">
