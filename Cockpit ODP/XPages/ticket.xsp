@@ -154,6 +154,18 @@ return ctx.isDocEditable(currentDocument.getDocument()) && !currentDocument.isEd
 							styleClass="alert alert-danger msg" for="ticketAbstract">
 						</xp:message>
 					</div>
+					<div class="form-group">
+					<xp:label value="Priority" id="label4"
+						for="comboBox2">
+					</xp:label>
+					<xp:comboBox id="comboBox2"
+						value="#{document1.ticketPriority}" styleClass="form-control">
+						<xp:selectItems>
+							<xp:this.value><![CDATA[#{javascript:return ["","urgent|1","normal|2","low|3"];
+}]]></xp:this.value>
+						</xp:selectItems>
+					</xp:comboBox>
+					</div>
 				</xp:div>
 				<!-- History -->
 				<xc:ccHistory historyItem="ticketHistory"></xc:ccHistory>
