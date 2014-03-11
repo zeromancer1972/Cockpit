@@ -12,6 +12,7 @@
 		<content-type>application/x-javascript</content-type>
 		<href>tablesorter/jquery.tablesorter.js</href>
 	</resource>
+	
 	<resource>
 		<content-type>text/css</content-type>
 		<href>flick/css/flick/jquery-ui-1.10.4.custom.min.css</href>
@@ -20,6 +21,7 @@
 		<content-type>text/css</content-type>
 		<href>bootstrap3/css/bootstrap.min.css</href>
 	</resource>
+	
 	<!--
 		<resource> <content-type>text/css</content-type>
 		<href>bootstrap3/css/bootstrap-theme.min.css</href> </resource>

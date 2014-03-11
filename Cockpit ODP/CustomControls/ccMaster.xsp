@@ -64,38 +64,38 @@ return pagename!=null && pagename!="" ? pagename : "customers"}]]></xe:this.defa
 								</xp:dominoView>
 							</xp:this.data>
 							<xp:viewColumn columnName="customerName"
-								id="viewColumn1" displayAs="link" openDocAsReadonly="true">
+								id="viewColumn1" displayAs="link">
 								<xp:viewColumnHeader value="Name"
 									id="viewColumnHeader1">
 								</xp:viewColumnHeader>
 							</xp:viewColumn>
 							
 							<xp:viewColumn columnName="customerStreet"
-								id="viewColumn3" displayAs="link" openDocAsReadonly="true">
+								id="viewColumn3" displayAs="link">
 								<xp:viewColumnHeader value="Street"
 									id="viewColumnHeader3">
 								</xp:viewColumnHeader>
 							</xp:viewColumn>
 							<xp:viewColumn columnName="customerZIP"
-								id="viewColumn4" displayAs="link" openDocAsReadonly="true">
+								id="viewColumn4" displayAs="link">
 								<xp:viewColumnHeader value="ZIP"
 									id="viewColumnHeader4">
 								</xp:viewColumnHeader>
 							</xp:viewColumn>
 							<xp:viewColumn columnName="customerCity"
-								id="viewColumn5" displayAs="link" openDocAsReadonly="true">
+								id="viewColumn5" displayAs="link">
 								<xp:viewColumnHeader value="City"
 									id="viewColumnHeader5">
 								</xp:viewColumnHeader>
 							</xp:viewColumn>
 							<xp:viewColumn columnName="customerEmail"
-								id="viewColumn6" displayAs="link" openDocAsReadonly="true">
+								id="viewColumn6" displayAs="link">
 								<xp:viewColumnHeader value="E-Mail"
 									id="viewColumnHeader6">
 								</xp:viewColumnHeader>
 							</xp:viewColumn>
 							<xp:viewColumn columnName="customerPhone"
-								id="viewColumn7" displayAs="link" openDocAsReadonly="true">
+								id="viewColumn7" displayAs="link">
 								<xp:viewColumnHeader value="Phone"
 									id="viewColumnHeader7">
 								</xp:viewColumnHeader>

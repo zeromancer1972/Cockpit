@@ -2,7 +2,10 @@
 <xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xc="http://www.ibm.com/xsp/custom">
 
 	<xp:this.navigationRules>
-		<xp:navigationRule outcome="close" viewId="/master.xsp"></xp:navigationRule>
+		<xp:navigationRule outcome="close">
+			<xp:this.viewId><![CDATA[#{javascript:var page = sessionScope.get("return");
+return page!=null?page:"master"}]]></xp:this.viewId>
+		</xp:navigationRule>
 	</xp:this.navigationRules>
 	<xc:ccLayoutBootstrapDynamic>
 		<xp:this.facets>

@@ -2,6 +2,7 @@
 <xp:view xmlns:xp="http://www.ibm.com/xsp/core"
 	xmlns:xc="http://www.ibm.com/xsp/custom">
 
+	<xp:this.beforePageLoad><![CDATA[#{javascript:sessionScope.put("return", "index")}]]></xp:this.beforePageLoad>
 	<xc:ccLayoutBootstrapDynamic><xp:this.facets>
 	<xc:ccMetrics xp:key="facetLeft"></xc:ccMetrics>
 	<xc:ccDashboard xp:key="facetMiddle"></xc:ccDashboard></xp:this.facets></xc:ccLayoutBootstrapDynamic></xp:view>

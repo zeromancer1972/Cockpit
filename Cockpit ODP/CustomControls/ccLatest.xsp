@@ -24,7 +24,7 @@
 				<tr>
 					<th>Created</th>
 					<th>Subject</th>
-					<th>Assigned to</th>
+					<th>Customer</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -59,10 +59,13 @@
 								</xp:eventHandler>
 							</xp:link>
 						</td>
-						<td>
+						<td style="white-space:nowrap; overflow:hidden">
 							<xp:link escape="true" id="link2"
 								disableTheme="true">
-								<xp:this.text><![CDATA[#{javascript:@Name("[Abbreviate]", doc.getDocument().getItemValueString("ticketResponsible"))}]]></xp:this.text>
+								<xp:this.text><![CDATA[#{javascript:var customerid = doc.getDocument().getItemValueString("ticketCustomerId");
+var customer = @DbLookup(@DbName(), "customers", customerid, "customerName");
+var customerName = @If(@IsError(customer), "- customer not found -", customer);
+@Name("[Abbreviate]", customerName);}]]></xp:this.text>
 								<xp:eventHandler event="onclick"
 									submit="true" refreshMode="complete" immediate="true">
 									<xp:this.action>

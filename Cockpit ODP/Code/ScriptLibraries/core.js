@@ -64,6 +64,7 @@ dojo.addOnLoad( function() {
 	}).mouseup( function() {
 		return false;
 	});
+	
 })
 
 $(document).on(
