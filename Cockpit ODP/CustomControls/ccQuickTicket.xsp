@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core"
+	rendered="#{javascript:acl.createDocuments}">
 	<xp:this.data>
 		<xp:dominoDocument var="document1" formName="ticket">
 			<xp:this.postSaveDocument><![CDATA[#{javascript:context.reloadPage()}]]></xp:this.postSaveDocument>
@@ -17,17 +18,20 @@ currentDocument.setValue("ticketUpdated", @Now());}]]></xp:this.querySaveDocumen
 		</div>
 		<xp:div styleClass="panel-body" id="quickticket">
 			<div class="form-group">
-				<xp:label value="Subject" id="label1" disableTheme="true"
-					for="ticketSubject">
+				<xp:label value="Subject" id="label1"
+					disableTheme="true" for="ticketSubject">
 				</xp:label>
-				<xp:inputText id="ticketSubject" value="#{document1.ticketSubject}"
-					styleClass="form-control" required="true">
+				<xp:inputText id="ticketSubject"
+					value="#{document1.ticketSubject}" styleClass="form-control"
+					required="true">
 					<xp:this.validators>
-						<xp:validateRequired message="Please enter a subject">
+						<xp:validateRequired
+							message="Please enter a subject">
 						</xp:validateRequired>
 					</xp:this.validators>
 					<xp:this.attrs>
-						<xp:attr name="placeholder" value="Enter a meaningful subject">
+						<xp:attr name="placeholder"
+							value="Enter a meaningful subject">
 						</xp:attr>
 					</xp:this.attrs>
 				</xp:inputText>
@@ -36,17 +40,20 @@ currentDocument.setValue("ticketUpdated", @Now());}]]></xp:this.querySaveDocumen
 				</xp:message>
 			</div>
 			<div class="form-group">
-				<xp:label value="Abstract" id="label2" disableTheme="true"
-					for="ticketAbstract">
+				<xp:label value="Abstract" id="label2"
+					disableTheme="true" for="ticketAbstract">
 				</xp:label>
-				<xp:inputText id="ticketAbstract" value="#{document1.ticketAbstract}"
-					styleClass="form-control" required="true">
+				<xp:inputText id="ticketAbstract"
+					value="#{document1.ticketAbstract}" styleClass="form-control"
+					required="true">
 					<xp:this.validators>
-						<xp:validateRequired message="Please enter a short abstract">
+						<xp:validateRequired
+							message="Please enter a short abstract">
 						</xp:validateRequired>
 					</xp:this.validators>
 					<xp:this.attrs>
-						<xp:attr name="placeholder" value="Enter a short abstract">
+						<xp:attr name="placeholder"
+							value="Enter a short abstract">
 						</xp:attr>
 					</xp:this.attrs>
 				</xp:inputText>
@@ -54,13 +61,14 @@ currentDocument.setValue("ticketUpdated", @Now());}]]></xp:this.querySaveDocumen
 					styleClass="alert alert-danger msg" for="ticketAbstract">
 				</xp:message>
 			</div>
-			
+
 		</xp:div>
 		<div class="panel-footer">
 			<div style="height:30px">
 				<span class="pull-right">
-					<xp:link escape="true" text="Create Ticket" id="link1"
-						disableTheme="true" styleClass="btn btn-sm btn-custom-green">
+					<xp:link escape="true" text="Create Ticket"
+						id="link1" disableTheme="true"
+						styleClass="btn btn-sm btn-custom-green">
 						<span class="glyphicon glyphicon-save"></span>
 						&#160;
 						<xp:eventHandler event="onclick" submit="true"

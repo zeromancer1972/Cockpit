@@ -35,7 +35,13 @@
 						<td>
 							<span class="glyphicon glyphicon-time"></span>
 							&#160;
-							<xp:text escape="true" id="computedField1" value="#{doc.ticketUpdated}">
+							<xp:text escape="true" id="computedField1"
+								value="#{doc.ticketUpdated}">
+								<xp:this.converter>
+									<xp:convertDateTime
+										pattern="MM/dd/yyyy HH:mm">
+									</xp:convertDateTime>
+								</xp:this.converter>
 							</xp:text>
 						</td>
 						<td>

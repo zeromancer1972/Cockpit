@@ -31,8 +31,8 @@
 							&#160;
 							<xp:text escape="true" id="computedField1" value="#{doc.ticketCreated}">
 								<xp:this.converter>
-									<xp:convertDateTime type="both" dateStyle="short"
-										timeStyle="short">
+									<xp:convertDateTime
+										pattern="MM/dd/yyyy HH:mm">
 									</xp:convertDateTime>
 								</xp:this.converter>
 							</xp:text>
