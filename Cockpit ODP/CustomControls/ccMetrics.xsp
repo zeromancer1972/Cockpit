@@ -6,7 +6,7 @@
 			<xp:link escape="true" id="link1" disableTheme="true" value="/latest.xsp">
 				<span class="glyphicon glyphicon-signal"></span>
 				&#160;
-				<xp:this.text><![CDATA[#{javascript:"Ticket count: "+metrics.ticketCount}]]></xp:this.text>
+				<xp:this.text><![CDATA[#{javascript:"All Tickets: "+metrics.ticketCount}]]></xp:this.text>
 			</xp:link>
 		</div>
 		<div class="col-lg-2">

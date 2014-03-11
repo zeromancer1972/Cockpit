@@ -187,6 +187,11 @@ return ctx.isDocEditable(currentDocument.getDocument()) && !currentDocument.isEd
 					<xp:text escape="true" id="computedField1" value="#{document1.ticketSubject}">
 					</xp:text>
 				</h4>
+				<span class="pull-right">
+					Ticket ID:&#160;
+					<xp:text escape="true" id="computedField4" value="#{document1.ticketID}">
+					</xp:text>
+				</span>
 				<p>
 					Created&#160;
 					<b>
