@@ -1,6 +1,7 @@
 package org.openntf.cockpit;
 
 import java.io.Serializable;
+import java.util.HashMap;
 
 public class Ticket implements Serializable {
 
@@ -30,7 +31,13 @@ public class Ticket implements Serializable {
 	}
 
 	public String getStatus() {
-		return status;
+		String[] s = { "open~1", "investigating~10", "work in progress~20", "solved~90", "closed~99" };
+		HashMap<String, String> map = new HashMap<String, String>();
+
+		for (int x = 0; x < s.length; x++) {
+			map.put(s[x].split("~")[1], s[x].split("~")[0]);
+		}
+		return map.get(this.status);
 	}
 
 	public void setStatus(String status) {
