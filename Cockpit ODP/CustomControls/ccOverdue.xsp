@@ -19,7 +19,7 @@
 			</colgroup>
 			<thead>
 				<tr>
-					<th>Created</th>
+					<th>Updated</th>
 					<th>Subject</th>
 					<th>Assigned to</th>
 				</tr>
@@ -41,12 +41,14 @@
 							</xp:text>
 						</td>
 						<td>
-							<xp:link escape="true" id="link1" disableTheme="true"
-								text="#{javascript:ticket.getSubject()}">
-								<xp:eventHandler event="onclick" submit="true"
-									refreshMode="complete" immediate="true">
+							<xp:link escape="true" id="link1"
+								disableTheme="true" text="#{javascript:ticket.getSubject()}"
+								title="#{javascript:ticket.getStatus()}">
+								<xp:eventHandler event="onclick"
+									submit="true" refreshMode="complete" immediate="true">
 									<xp:this.action>
-										<xp:openPage name="/ticket.xsp" target="editDocument"
+										<xp:openPage name="/ticket.xsp"
+											target="editDocument"
 											documentId="#{javascript:ticket.getUnid()}">
 										</xp:openPage>
 									</xp:this.action>

@@ -10,6 +10,7 @@ public class Ticket implements Serializable {
 	private String subject;
 	private String assigned;
 	private String abbreviated;
+	private String status;
 
 	public Ticket(String unid, String created, String subject, String assigned, String abbreviated) {
 		this.unid = unid;
@@ -17,6 +18,23 @@ public class Ticket implements Serializable {
 		this.subject = subject;
 		this.assigned = assigned;
 		this.abbreviated = abbreviated;
+	}
+
+	public Ticket(String unid, String created, String subject, String assigned, String abbreviated, String status) {
+		this.unid = unid;
+		this.created = created;
+		this.subject = subject;
+		this.assigned = assigned;
+		this.abbreviated = abbreviated;
+		this.status = status;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public String getUnid() {

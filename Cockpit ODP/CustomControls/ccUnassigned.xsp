@@ -37,7 +37,7 @@
 								value="#{doc.ticketCreated}">
 								<xp:this.converter>
 									<xp:convertDateTime
-										pattern="MM/dd/yyyy HH:mm">
+										pattern="MM/dd/yyyy hh:mm a">
 									</xp:convertDateTime>
 								</xp:this.converter>
 							</xp:text>

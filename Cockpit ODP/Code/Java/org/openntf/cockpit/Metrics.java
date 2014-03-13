@@ -59,11 +59,11 @@ public class Metrics implements Serializable {
 			DateTime dt = null;
 
 			Document doc = col.getFirstDocument();
-			SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy hh:mm", Locale.ENGLISH);
+			SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy hh:mm a", Locale.ENGLISH);
 			while (doc != null) {
-				dt = (DateTime) doc.getItemValueDateTimeArray("ticketCreated").elementAt(0);
+				dt = (DateTime) doc.getItemValueDateTimeArray("ticketUpdated").elementAt(0);
 				this.overdue.add(new Ticket(doc.getUniversalID(), formatter.format(dt.toJavaDate()), doc.getItemValueString("ticketSubject"), ExtLibUtil.getCurrentSession().createName(
-						doc.getItemValueString("ticketResponsible")).getCommon(), ExtLibUtil.getCurrentSession().createName(doc.getItemValueString("ticketResponsible")).getAbbreviated()));
+						doc.getItemValueString("ticketResponsible")).getCommon(), ExtLibUtil.getCurrentSession().createName(doc.getItemValueString("ticketResponsible")).getAbbreviated(), doc.getItemValueString("ticketStatus")));
 				doc = col.getNextDocument(doc);
 			}
 			if (doc != null)

@@ -36,7 +36,7 @@
 							&#160;
 							<xp:text escape="true" id="computedField1">
 								<xp:this.converter>
-									<xp:convertDateTime pattern="MM/dd/yyyy HH:mm">
+									<xp:convertDateTime pattern="MM/dd/yyyy hh:mm a">
 									</xp:convertDateTime>
 								</xp:this.converter>
 								<xp:this.value><![CDATA[#{javascript:doc.getDocument().getItemValue("ticketUpdated").elementAt(0).toJavaDate()}]]></xp:this.value>
