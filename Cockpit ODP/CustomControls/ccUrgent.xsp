@@ -60,7 +60,8 @@
 						<td>
 							<xp:link escape="true" id="link2"
 								disableTheme="true">
-								<xp:this.text><![CDATA[#{javascript:@Name("[Abbreviate]", doc.getItemValueString("ticketResponsible"))}]]></xp:this.text>
+								<xp:this.text><![CDATA[#{javascript:@Name("[CN]", doc.getItemValueString("ticketResponsible"))}]]></xp:this.text>
+								<xp:this.title><![CDATA[#{javascript:@Name("[Abbreviate]", doc.getItemValueString("ticketResponsible"))}]]></xp:this.title>
 								<xp:eventHandler event="onclick"
 									submit="true" refreshMode="complete" immediate="true">
 									<xp:this.action>

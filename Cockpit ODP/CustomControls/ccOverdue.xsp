@@ -62,13 +62,14 @@
 						<td>
 							<xp:link escape="true" id="link2"
 								disableTheme="true">
-								<xp:this.text><![CDATA[#{javascript:@Name("[Abbreviate]", doc.getDocument().getItemValueString("ticketResponsible"))}]]></xp:this.text>
+								<xp:this.text><![CDATA[#{javascript:@Name("[CN]", doc.getDocument().getItemValueString("ticketResponsible"))}]]></xp:this.text>
+								<xp:this.title><![CDATA[#{javascript:@Name("[Abbreviate]", doc.getDocument().getItemValueString("ticketResponsible"))}]]></xp:this.title>
 								<xp:eventHandler event="onclick"
 									submit="true" refreshMode="complete" immediate="true">
 									<xp:this.action>
 										<xp:openPage name="/ticket.xsp"
 											target="editDocument"
-											documentId="#{javascript:doc.getDocument().getUniversalID()}">
+											documentId="#{javascript:doc.getUniversalID()}">
 										</xp:openPage>
 									</xp:this.action>
 								</xp:eventHandler>

@@ -192,7 +192,7 @@ return ctx.isDocEditable(currentDocument.getDocument()) && !currentDocument.isEd
 						</xp:label>
 						<xp:comboBox id="comboBox3" value="#{document1.ticketStatus}"
 							styleClass="form-control">
-							<xp:selectItems>
+							<xp:this.defaultValue><![CDATA[#{javascript:"1"}]]></xp:this.defaultValue><xp:selectItems>
 								<xp:this.value><![CDATA[#{javascript:return ["","open|1","investigating|10","work in progress|20", "solved|90", "closed|99"];
 }]]></xp:this.value>
 							</xp:selectItems>
