@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xp:view xmlns:xp="http://www.ibm.com/xsp/core"
-	xmlns:xc="http://www.ibm.com/xsp/custom">
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xc="http://www.ibm.com/xsp/custom">
 	<xp:this.data>
 		<xp:dominoView var="view1" viewName="ticketsByDate"></xp:dominoView>
 	</xp:this.data>
@@ -24,36 +23,32 @@
 				<tr>
 					<th>Updated</th>
 					<th>Subject</th>
-					<th>Customer</th>
+					<th>Assigned to</th>
 				</tr>
 			</thead>
 			<tbody>
 				<xp:repeat id="repeat1"
-					rows="#{javascript: return compositeData.isWidget?5:30}"
-					value="#{view1}" var="doc">
+					rows="#{javascript: return compositeData.isWidget?5:30}" value="#{view1}"
+					var="doc">
 					<tr>
 						<td>
 							<span class="glyphicon glyphicon-time"></span>
 							&#160;
-							<xp:text escape="true"
-								id="computedField1">
+							<xp:text escape="true" id="computedField1">
 								<xp:this.converter>
-									<xp:convertDateTime
-										pattern="MM/dd/yyyy HH:mm">
+									<xp:convertDateTime pattern="MM/dd/yyyy HH:mm">
 									</xp:convertDateTime>
 								</xp:this.converter>
 								<xp:this.value><![CDATA[#{javascript:doc.getDocument().getItemValue("ticketUpdated").elementAt(0).toJavaDate()}]]></xp:this.value>
 							</xp:text>
 						</td>
 						<td>
-							<xp:link escape="true" id="link1"
-								disableTheme="true">
+							<xp:link escape="true" id="link1" disableTheme="true">
 								<xp:this.text><![CDATA[#{javascript:doc.getDocument().getItemValueString("ticketSubject")}]]></xp:this.text>
-								<xp:eventHandler event="onclick"
-									submit="true" refreshMode="complete" immediate="true">
+								<xp:eventHandler event="onclick" submit="true"
+									refreshMode="complete" immediate="true">
 									<xp:this.action>
-										<xp:openPage name="/ticket.xsp"
-											target="editDocument"
+										<xp:openPage name="/ticket.xsp" target="editDocument"
 											documentId="#{javascript:doc.getDocument().getUniversalID()}">
 										</xp:openPage>
 									</xp:this.action>
@@ -61,33 +56,41 @@
 							</xp:link>
 						</td>
 						<td style="white-space:nowrap; overflow:hidden">
-							<xp:link escape="true" id="link2"
-								disableTheme="true">
-								<xp:this.text><![CDATA[#{javascript:var customerid = doc.getDocument().getItemValueString("ticketCustomerId");
-var customer = @DbLookup(@DbName(), "customers", customerid, "customerName");
-var customerName = @If(@IsError(customer), "- customer not found -", customer);
-@Name("[Abbreviate]", customerName);}]]></xp:this.text>
-								<xp:eventHandler event="onclick"
-									submit="true" refreshMode="complete" immediate="true">
+							<xp:link escape="true" id="link2" disableTheme="true">
+								<xp:this.text><![CDATA[#{javascript:@Name("[Abbreviate]", doc.getDocument().getItemValueString("ticketResponsible"))}]]></xp:this.text>
+								<xp:eventHandler event="onclick" submit="true"
+									refreshMode="complete" immediate="true">
 									<xp:this.action>
-										<xp:openPage name="/ticket.xsp"
-											target="editDocument"
-											documentId="#{javascript:doc.getDocument().getUniversalID()}">
+										<xp:openPage name="/ticket.xsp" target="editDocument"
+											documentId="#{javascript:doc.getUniversalID()}">
 										</xp:openPage>
 									</xp:this.action>
 								</xp:eventHandler>
 							</xp:link>
+
+							<!--
+								<xp:link escape="true" id="link2" disableTheme="true">
+								<xp:this.text><![CDATA[#{javascript:var customerid =
+								doc.getDocument().getItemValueString("ticketCustomerId"); var
+								customer = @DbLookup(@DbName(), "customers", customerid,
+								"customerName"); var customerName = @If(@IsError(customer), "-
+								customer not found -", customer); @Name("[Abbreviate]",
+								customerName);}]]></xp:this.text> <xp:eventHandler
+								event="onclick" submit="true" refreshMode="complete"
+								immediate="true"> <xp:this.action> <xp:openPage
+								name="/ticket.xsp" target="editDocument"
+								documentId="#{javascript:doc.getDocument().getUniversalID()}">
+								</xp:openPage> </xp:this.action> </xp:eventHandler> </xp:link>
+							-->
 						</td>
 					</tr>
 				</xp:repeat>
 			</tbody>
 		</table>
 		<div class="panel-footer">
-			<xp:div style="padding: 0px 0px 20px 0px"
-				rendered="#{javascript:!compositeData.isWidget}">
-				<xp:pager layout="Previous Group Next"
-					partialRefresh="true" id="pager1" for="repeat1"
-					panelPosition="left" disableTheme="true">
+			<xp:div style="padding: 0px 0px 20px 0px" rendered="#{javascript:!compositeData.isWidget}">
+				<xp:pager layout="Previous Group Next" partialRefresh="true"
+					id="pager1" for="repeat1" panelPosition="left" disableTheme="true">
 				</xp:pager>
 			</xp:div>
 		</div>

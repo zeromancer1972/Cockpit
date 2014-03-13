@@ -2,13 +2,13 @@
 <xp:view xmlns:xp="http://www.ibm.com/xsp/core"
 	xmlns:xc="http://www.ibm.com/xsp/custom">
 	<xp:this.data>
-		<xp:dominoView var="view1" viewName="ticketsUnassigned"></xp:dominoView>
+		<xp:dominoView var="view1" viewName="ticketsSolved"></xp:dominoView>
 	</xp:this.data>
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h4 class="panel-title">
-				<span class="glyphicon glyphicon-question-sign"></span>
-				&#160;Not assigned
+				<span class="glyphicon glyphicon-ok"></span>
+				&#160;Solved / Closed
 			</h4>
 
 			<xc:ccChevron></xc:ccChevron>
@@ -17,35 +17,56 @@
 			class="panel-body table table-striped table-condensed table-hover #{javascript: return compositeData.isWidget?'tiny':''}">
 			<colgroup>
 				<col width="30%" />
-				<col width="70%" />				
+				<col width="40%" />
+				<col width="30%" />
 			</colgroup>
 			<thead>
 				<tr>
-					<th>Created</th>
+					<th>Solved / Closed</th>
 					<th>Subject</th>
+					<th>Customer</th>
 				</tr>
 			</thead>
 			<tbody>
 				<xp:repeat id="repeat1"
-					rows="#{javascript: return compositeData.isWidget?5:30}" var="doc"
-					value="#{view1}">
+					rows="#{javascript: return compositeData.isWidget?5:30}"
+					value="#{view1}" var="doc">
 					<tr>
 						<td>
 							<span class="glyphicon glyphicon-time"></span>
 							&#160;
-							<xp:text escape="true" id="computedField1"
-								value="#{doc.ticketCreated}">
+							<xp:text escape="true"
+								id="computedField1">
 								<xp:this.converter>
 									<xp:convertDateTime
 										pattern="MM/dd/yyyy HH:mm">
 									</xp:convertDateTime>
 								</xp:this.converter>
+								<xp:this.value><![CDATA[#{javascript:doc.getDocument().getItemValue("ticketUpdated").elementAt(0).toJavaDate()}]]></xp:this.value>
 							</xp:text>
 						</td>
 						<td>
 							<xp:link escape="true" id="link1"
 								disableTheme="true">
 								<xp:this.text><![CDATA[#{javascript:doc.getDocument().getItemValueString("ticketSubject")}]]></xp:this.text>
+								<xp:eventHandler event="onclick"
+									submit="true" refreshMode="complete" immediate="true">
+									<xp:this.action>
+										<xp:openPage name="/ticket.xsp"
+											target="editDocument"
+											documentId="#{javascript:doc.getDocument().getUniversalID()}">
+										</xp:openPage>
+									</xp:this.action>
+								</xp:eventHandler>
+							</xp:link>
+						</td>
+						<td style="white-space:nowrap; overflow:hidden">
+							<xp:link escape="true" id="link2"
+								disableTheme="true">
+								<xp:this.text><![CDATA[#{javascript:var customerid = doc.getDocument().getItemValueString("ticketCustomerId");
+var customer = @DbLookup(@DbName(), "customers", customerid, "customerName");
+var customerName = @If(@IsError(customer), "- customer not found -", customer);
+@Name("[Abbreviate]", customerName);}]]></xp:this.text>
 								<xp:eventHandler event="onclick"
 									submit="true" refreshMode="complete" immediate="true">
 									<xp:this.action>

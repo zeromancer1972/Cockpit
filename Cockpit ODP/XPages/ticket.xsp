@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xc="http://www.ibm.com/xsp/custom"
-	enableModifiedFlag="true"
+	xmlns:xe="http://www.ibm.com/xsp/coreex" enableModifiedFlag="true"
 	modifiedMessage="You have unsaved changes. do you want to discard your changes?"
 	modifiedControl="button1">
-
 	<xp:this.data>
 		<xp:dominoDocument var="document1" formName="ticket">
 			<xp:this.postNewDocument><![CDATA[#{javascript:currentDocument.setValue("ticketID", session.evaluate("@Unique"));
 currentDocument.setValue("ticketCreated", @Now());}]]></xp:this.postNewDocument>
 			<xp:this.querySaveDocument><![CDATA[#{javascript:currentDocument.setValue("ticketUpdated", @Now());}]]></xp:this.querySaveDocument>
-			<xp:this.postSaveDocument><![CDATA[#{javascript:history.addHistory(currentDocument.getDocument(), false)}]]></xp:this.postSaveDocument>
+			<xp:this.postSaveDocument><![CDATA[#{javascript:history.addHistory(currentDocument.getDocument(), false);
+rights.setNames(currentDocument.getDocument(true));}]]></xp:this.postSaveDocument>
 		</xp:dominoDocument>
 	</xp:this.data>
 	<xp:this.navigationRules>
@@ -94,24 +94,43 @@ return ctx.isDocEditable(currentDocument.getDocument()) && !currentDocument.isEd
 						<xp:label value="Customer" id="label3" for="comboBox1"
 							disableTheme="true">
 						</xp:label>
-						<xp:comboBox id="comboBox1" styleClass="form-control"
-							value="#{document1.ticketCustomerID}">
+						<div class="input-group">
+							<xp:comboBox id="comboBox1" styleClass="form-control"
+								style="padding-bottom:7px" value="#{document1.ticketCustomerID}">
 
-							<xp:this.validators>
-								<xp:validateRequired message="Please select a customer from the list">
-								</xp:validateRequired>
-							</xp:this.validators>
-							<xp:this.attrs>
-								<xp:attr name="placeholder" value="Select a customer from the list">
-								</xp:attr>
-							</xp:this.attrs>
-							<xp:selectItems>
-								<xp:this.value><![CDATA[#{javascript:""}]]></xp:this.value>
-							</xp:selectItems>
-							<xp:selectItems>
-								<xp:this.value><![CDATA[#{javascript:@DbColumn(@DbName(),"customersNameId",1)}]]></xp:this.value>
-							</xp:selectItems>
-						</xp:comboBox>
+								<xp:this.validators>
+									<xp:validateRequired message="Please select a customer from the list">
+									</xp:validateRequired>
+								</xp:this.validators>
+								<xp:this.attrs>
+									<xp:attr name="placeholder" value="Select a customer from the list">
+									</xp:attr>
+								</xp:this.attrs>
+								<xp:selectItems>
+									<xp:this.value><![CDATA[#{javascript:""}]]></xp:this.value>
+								</xp:selectItems>
+								<xp:selectItems>
+									<xp:this.value><![CDATA[#{javascript:@DbColumn(@DbName(),"customersNameId",1)}]]></xp:this.value>
+								</xp:selectItems>
+							</xp:comboBox>
+							<span class="input-group-btn">
+								<xp:button value="New customer" id="button5"
+									styleClass="btn btn-default" disableTheme="true">
+									<xp:eventHandler event="onclick" submit="true"
+										refreshMode="complete" immediate="true">
+										<xp:this.action>
+
+											<xp:actionGroup>
+
+												<xp:openPage name="/customer.xsp" target="newDocument">
+												</xp:openPage>
+
+											</xp:actionGroup>
+										</xp:this.action>
+									</xp:eventHandler>
+								</xp:button>
+							</span>
+						</div>
 						<xp:message id="message3" disableTheme="true"
 							styleClass="alert alert-danger msg" for="comboBox1">
 						</xp:message>
@@ -156,7 +175,8 @@ return ctx.isDocEditable(currentDocument.getDocument()) && !currentDocument.isEd
 						</xp:message>
 					</div>
 					<div class="form-group">
-						<xp:label value="Priority" id="label4" for="comboBox2">
+						<xp:label value="Priority" id="label4" for="comboBox2"
+							disableTheme="true">
 						</xp:label>
 						<xp:comboBox id="comboBox2" value="#{document1.ticketPriority}"
 							styleClass="form-control">
@@ -167,7 +187,8 @@ return ctx.isDocEditable(currentDocument.getDocument()) && !currentDocument.isEd
 						</xp:comboBox>
 					</div>
 					<div class="form-group">
-						<xp:label value="Status" id="label5" for="comboBox3">
+						<xp:label value="Status" id="label5" for="comboBox3"
+							disableTheme="true">
 						</xp:label>
 						<xp:comboBox id="comboBox3" value="#{document1.ticketStatus}"
 							styleClass="form-control">
@@ -176,6 +197,23 @@ return ctx.isDocEditable(currentDocument.getDocument()) && !currentDocument.isEd
 }]]></xp:this.value>
 							</xp:selectItems>
 						</xp:comboBox>
+					</div>
+					<div class="form-group">
+						<xp:label value="Assigned to" id="label6" for="ticketResponsible"
+							disableTheme="true">
+						</xp:label>
+						<xe:namePicker id="namePicker1" for="ticketResponsible"
+							dialogTitle="Choose names" rendered="#{javascript:currentDocument.isEditable()}">
+							<xe:this.dataProvider>
+								<xe:dominoNABNamePicker people="true"
+									addressBookSel="db-name">
+									<xe:this.addressBookDb><![CDATA[#{javascript:database.getServer()+"!!names.nsf"}]]></xe:this.addressBookDb>
+								</xe:dominoNABNamePicker>
+							</xe:this.dataProvider>
+						</xe:namePicker>
+						<xp:inputText id="ticketResponsible" value="#{document1.ticketResponsible}"
+							styleClass="form-control disabled">
+						</xp:inputText>
 					</div>
 				</xp:div>
 				<!-- History -->
@@ -187,11 +225,6 @@ return ctx.isDocEditable(currentDocument.getDocument()) && !currentDocument.isEd
 					<xp:text escape="true" id="computedField1" value="#{document1.ticketSubject}">
 					</xp:text>
 				</h4>
-				<span class="pull-right">
-					Ticket ID:&#160;
-					<xp:text escape="true" id="computedField4" value="#{document1.ticketID}">
-					</xp:text>
-				</span>
 				<p>
 					Created&#160;
 					<b>

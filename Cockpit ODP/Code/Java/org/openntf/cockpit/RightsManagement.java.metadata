@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.0" replicaid="C1257C96004E0544" version="9.0" xmlns="http://www.lotus.com/dxl">
+<noteinfo noteid="3da" sequence="16" unid="A8936BAE5ED21B33C1257C9900715F78">
+<created><datetime>20140312T213820,08+01</datetime></created>
+<modified><datetime>20140313T180607,42+01</datetime></modified>
+<revised><datetime>20140312T215225,27+01</datetime></revised>
+<lastaccessed><datetime>20140313T180607,42+01</datetime></lastaccessed>
+<addedtofile><datetime>20140313T180607,42+01</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Oliver Busse/O=ulcbs</name></updatedby>
+<wassignedby><name>CN=Oliver Busse/O=ulcbs</name></wassignedby>
+<item name="$Flags"><text>34567Cg~[</text></item>
+<item name="$TITLE"><text>org/openntf/cockpit/RightsManagement.java</text></item>
+
+<item name="$DesignerVersion"><text>8.5.3</text></item>
+
+
+<item name="$FileNames" sign="true"><text>org/openntf/cockpit/RightsManagement.java</text></item>
+
+</note>

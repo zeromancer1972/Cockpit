@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xp:view xmlns:xp="http://www.ibm.com/xsp/core"
-	xmlns:xc="http://www.ibm.com/xsp/custom">
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xc="http://www.ibm.com/xsp/custom">
 
-	<xc:ccLayoutBootstrapDynamic><xp:this.facets>
-	<xc:ccMetrics xp:key="facetLeft"></xc:ccMetrics>
-	<xc:ccLatest xp:key="facetMiddle"></xc:ccLatest></xp:this.facets></xc:ccLayoutBootstrapDynamic></xp:view>
+	<xc:ccLayoutBootstrapDynamic>
+		<xp:this.facets>
+			<xc:ccMetrics xp:key="facetLeft"></xc:ccMetrics>
+			<xp:div xp:key="facetMiddle">			
+			<xc:ccLatest isWidget="false"></xc:ccLatest>
+			<xc:ccSolved isWidget="false"></xc:ccSolved>
+			</xp:div>
+		</xp:this.facets>
+	</xc:ccLayoutBootstrapDynamic>
+</xp:view>
