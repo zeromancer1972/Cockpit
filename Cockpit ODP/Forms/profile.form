@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <note class='form' xmlns='http://www.lotus.com/dxl' version='9.0' maintenanceversion='1.0'
  replicaid='C1257C96004E0544'>
-<noteinfo noteid='25a' unid='093045A72048E0E2C1257C96005DD11B' sequence='2'>
+<noteinfo noteid='25a' unid='093045A72048E0E2C1257C96005DD11B' sequence='4'>
 <created><datetime>20140309T180443,79+01</datetime></created>
-<modified><datetime>20140309T180507,39+01</datetime></modified>
-<revised><datetime>20140309T180507,38+01</datetime></revised>
-<lastaccessed><datetime>20140309T180507,39+01</datetime></lastaccessed>
+<modified><datetime>20140313T223547,07+01</datetime></modified>
+<revised><datetime>20140313T223547,03+01</datetime></revised>
+<lastaccessed><datetime>20140313T223547,07+01</datetime></lastaccessed>
 <addedtofile><datetime>20140309T180444,74+01</datetime></addedtofile></noteinfo>
 <updatedby><name>CN=Oliver Busse/O=ulcbs</name></updatedby>
 <wassignedby><name>CN=Oliver Busse/O=ulcbs</name></wassignedby>
@@ -26,13 +26,18 @@ hhgBAIAAAAAAgAAAAQABAP///wAQAAAA
 <item name='profileName' placeholder='true'>
 <rawitemdata type='0'>
 </rawitemdata></item>
-<item name='$Fields'><text>profileName</text></item>
+<item name='profileOverdue' summary='false'><number>0</number></item>
+<item name='$Fields'><textlist><text>profileOverdue</text><text>profileName</text></textlist></item>
 <item name='$Body' sign='true'>
 <rawitemdata type='1'>
 gQKC/1oAAQAAAAAAAAAAAKAFAACgBQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAABAAAAAJSHAAAAAAAAAAAAAAAAAQAAAAQAAACDBAEAhf8IAAEAAArdBgAAiv/+/1AA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4AHgAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAIr/MACKAAAFADACAAAAAAAAAgEAAAoAAAAAAAAAAAsAAAAAAHBy
-b2ZpbGVOYW1lAGIOAQCEAAAAAAAAAAAA3gYAAIr/hf8IAAEAAAo=
+b2ZpbGVOYW1lAGIOAQCEAAAAAAAAAAAA3gYAAIr/hf8IAAEAAAqBAoMEAQCF/xgAAQAACk92ZXJk
+dWUgaW4gZGF5cwndBgAAiv/+/1AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4
+AHgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIr/MgCKAAADADACAAAAAAAA
+AgEAAAoAAAAAAAAAAA4AAAAAAHByb2ZpbGVPdmVyZHVl3gYAAIr/hf8IAAEAAAqBAoMEAQCF/wgA
+AQAACg==
 </rawitemdata></item></note>
 

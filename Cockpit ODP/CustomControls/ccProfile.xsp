@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xe="http://www.ibm.com/xsp/coreex">
+	<xp:this.data>
+		<xp:dominoDocument var="document1" formName="profile"
+			action="openDocument">
+			<xp:this.documentId><![CDATA[#{javascript:@DbLookup(@DbName(), "profiles", "profile", "Form", "[RETURNDOCUMENTUNIQUEID]")}]]></xp:this.documentId>
+		</xp:dominoDocument>
+	</xp:this.data>
 	<xp:div styleClass="actionbar">
 		<xp:div styleClass="">
 			<xp:button value="Save" id="button1"
 				rendered="#{javascript:currentDocument.isEditable()}" styleClass="btn btn-custom-green">
 				<xp:eventHandler event="onclick" submit="true"
-					refreshMode="complete">
+					refreshMode="partial" refreshId="theform">
 					<xp:this.action>
 						<xp:saveDocument var="document1"></xp:saveDocument>
 					</xp:this.action>
@@ -16,7 +22,7 @@
 				styleClass="btn btn-custom-green">
 				<xp:this.value><![CDATA[Save & close]]></xp:this.value>
 				<xp:eventHandler event="onclick" submit="true"
-					refreshMode="complete">
+					refreshMode="partial" refreshId="theform">
 					<xp:this.action>
 
 						<xp:actionGroup>
@@ -50,5 +56,27 @@ return ctx.isDocEditable(currentDocument.getDocument()) && !currentDocument.isEd
 			</xp:button>
 		</xp:div>
 	</xp:div>
-
+	<xp:div styleClass="theform" id="theform">
+		<div class="form-group">
+			<xp:label value="Overdue in days" id="label1"
+				disableTheme="true" for="inputText1">
+			</xp:label>
+			<xp:inputText id="inputText1" value="#{document1.profileOverdue}"
+				required="true" styleClass="form-control">
+				<xp:this.converter>
+					<xp:convertNumber type="number"></xp:convertNumber>
+				</xp:this.converter>
+				<xp:this.validators>
+					<xp:validateLongRange minimum="1" maximum="7"
+						message="Please enter a value between 1 and 7">
+					</xp:validateLongRange>
+					<xp:validateRequired message="Please enter a value">
+					</xp:validateRequired>
+				</xp:this.validators>
+			</xp:inputText>
+			<xp:message id="message1" for="inputText1"
+				styleClass="alert alert-danger msg">
+			</xp:message>
+		</div>
+	</xp:div>
 </xp:view>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.0" replicaid="C1257C96004E0544" version="9.0" xmlns="http://www.lotus.com/dxl">
+<noteinfo noteid="3e6" sequence="3" unid="AD011D856A7F835CC1257C9A007877AD">
+<created><datetime>20140313T225549,57+01</datetime></created>
+<modified><datetime>20140313T225549,71+01</datetime></modified>
+<revised><datetime>20140313T225549,70+01</datetime></revised>
+<lastaccessed><datetime>20140313T225549,71+01</datetime></lastaccessed>
+<addedtofile><datetime>20140313T225549,58+01</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Oliver Busse/O=ulcbs</name></updatedby>
+<wassignedby><name>CN=Oliver Busse/O=ulcbs</name></wassignedby>
+<item name="$Flags"><text>34567Cg~[</text></item>
+<item name="$TITLE"><text>org/openntf/cockpit/Ticket.java</text></item>
+<item name="$DesignerVersion"><text>8.5.3</text></item>
+
+
+<item name="$FileNames" sign="true"><text>org/openntf/cockpit/Ticket.java</text></item></note>
