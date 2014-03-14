@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<note class='view' xmlns='http://www.lotus.com/dxl' version='9.0' maintenanceversion='1.0'
+ replicaid='C1257C96004E0544'>
+<noteinfo noteid='406' unid='DCC4FD53FD4E10CDC1257C9B006ECB19' sequence='4'>
+<created><datetime>20140314T211009,53+01</datetime></created>
+<modified><datetime>20140314T211025,74+01</datetime></modified>
+<revised><datetime>20140314T211025,73+01</datetime></revised>
+<lastaccessed><datetime>20140314T211025,74+01</datetime></lastaccessed>
+<addedtofile><datetime>20140314T211009,56+01</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Oliver Busse/O=ulcbs</name></updatedby>
+<wassignedby><name>CN=Oliver Busse/O=ulcbs</name></wassignedby>
+<item name='$FormatNote' summary='true'>
+<rawitemdata type='4'>
+AQB7U8wALV+6NtS2ZgCbfCXB
+</rawitemdata></item>
+<item name='$FormulaClass' sign='true'><text>1</text></item>
+<item name='$TITLE' sign='true'><text>projectsByCustomerId</text></item>
+<item name='$Index' sign='true'><text/></item>
+<item name='$Formula' summary='true' sign='true'><formula compiled='true'>
+ZgAFADoANQAEABEACwAJAAQAcHJvamVjdEN1c3RvbWVySWRwcm9qZWN0TmFtZSRDb25mbGljdCRS
+RUYABAAEAAAAHAAFAAQAZm9ybQEABwBwcm9qZWN0AAoCAwAHAAoABAAJTDFT
+</formula></item>
+<item name='$Collation' summary='true'>
+<rawitemdata type='2'>
+HgABAABECGYHAAARAHByb2plY3RDdXN0b21lcklk
+</rawitemdata></item>
+<item name='$ViewFormat' summary='true' sign='true'>
+<rawitemdata type='5'>
+AQACAAIACAAAAFZDAwARAAsAAAAAAFAAAQAACgABAAAAAAAAAAICAAAAVkMAAAsABAAAAAAAUAAB
+AAAKAAAAAAAAAAAAAgIAAABwcm9qZWN0Q3VzdG9tZXJJZEN1c3RvbWVyIElEcHJvamVjdE5hbWVO
+YW1lJgABAAAAAQEACQEAAAoBAQ4KAAABAK0rAQABAAEAAAAAAAAAAABXQwEBAAkAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAV0MBAQAJAAAAAAAAAAAAAAAAAAAAAAAABAAA
+AAAA//8AAAAAAAAAAAAAAAAAAEIAAAAAAAEA////AAUA////AAEAAAAAAAAAAAAAAAAAAQD///8A
+AQD///8AAAABAAAAAAABAAAAAAABAAAAAAAAAAgAAAAAAAEA
+</rawitemdata></item>
+<item name='$Comment' sign='true'><text/></item>
+<item name='$Flags'><text>Y</text></item>
+<item name='$DesignerVersion'><text>8.5.3</text></item></note>
+

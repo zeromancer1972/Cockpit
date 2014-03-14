@@ -112,10 +112,14 @@ return ctx.isDocEditable(currentDocument.getDocument()) && !currentDocument.isEd
 								<xp:selectItems>
 									<xp:this.value><![CDATA[#{javascript:@DbColumn(@DbName(),"customersNameId",1)}]]></xp:this.value>
 								</xp:selectItems>
+								<xp:eventHandler event="onclick" submit="true"
+									refreshMode="partial" refreshId="comboBox4">
+								</xp:eventHandler>
 							</xp:comboBox>
 							<span class="input-group-btn">
 								<xp:button value="New customer" id="button5"
-									styleClass="btn btn-default" disableTheme="true">
+									styleClass="btn btn-default" disableTheme="true"
+									rendered="#{javascript:currentDocument.isEditable()}">
 									<xp:eventHandler event="onclick" submit="true"
 										refreshMode="complete" immediate="true">
 										<xp:this.action>
@@ -134,6 +138,40 @@ return ctx.isDocEditable(currentDocument.getDocument()) && !currentDocument.isEd
 						<xp:message id="message3" disableTheme="true"
 							styleClass="alert alert-danger msg" for="comboBox1">
 						</xp:message>
+					</div>
+					<div class="form-group">
+						<xp:label value="Project" id="label7" disableTheme="true">
+						</xp:label>
+						<div class="input-group">
+							<xp:comboBox id="comboBox4" styleClass="form-control">
+								<xp:this.validators>
+									<xp:validateRequired message="Please select a project">
+									</xp:validateRequired>
+								</xp:this.validators>
+								<xp:selectItems>
+									<xp:this.value><![CDATA[#{javascript:""}]]></xp:this.value>
+								</xp:selectItems>
+								<xp:selectItems>
+									<xp:this.value><![CDATA[#{javascript:@DbLookup(@DbName(), "projectsByCustomerId", getComponent("comboBox1").getValue(), "projectName", "[FAILSILENT]")}]]></xp:this.value>
+								</xp:selectItems>
+							</xp:comboBox>
+							<span class="input-group-btn">
+								<xp:button value="New project" id="button6"
+									styleClass="btn btn-default" disableTheme="true"
+									rendered="#{javascript:currentDocument.isEditable()}">
+									<xp:eventHandler event="onclick" submit="true"
+										refreshMode="complete" immediate="true">
+										<xp:this.action>
+											<xp:actionGroup>
+												<xp:openPage name="/project.xsp" target="newDocument">
+												</xp:openPage>
+											</xp:actionGroup>
+										</xp:this.action>
+									</xp:eventHandler>
+								</xp:button>
+							</span>
+						</div>
+						<xp:message id="message4" for="comboBox4"></xp:message>
 					</div>
 					<div class="form-group">
 						<xp:label value="Subject" id="label1" disableTheme="true"
@@ -192,7 +230,8 @@ return ctx.isDocEditable(currentDocument.getDocument()) && !currentDocument.isEd
 						</xp:label>
 						<xp:comboBox id="comboBox3" value="#{document1.ticketStatus}"
 							styleClass="form-control">
-							<xp:this.defaultValue><![CDATA[#{javascript:"1"}]]></xp:this.defaultValue><xp:selectItems>
+							<xp:this.defaultValue><![CDATA[#{javascript:"1"}]]></xp:this.defaultValue>
+							<xp:selectItems>
 								<xp:this.value><![CDATA[#{javascript:return ["","open|1","investigating|10","work in progress|20", "solved|90", "closed|99"];
 }]]></xp:this.value>
 							</xp:selectItems>
@@ -231,7 +270,7 @@ return ctx.isDocEditable(currentDocument.getDocument()) && !currentDocument.isEd
 						<xp:text escape="true" id="computedField2" value="#{document1.ticketCreated}"
 							disableTheme="true">
 							<xp:this.converter>
-								<xp:convertDateTime type="both" dateStyle="short">
+								<xp:convertDateTime type="both" dateStyle="medium">
 								</xp:convertDateTime>
 							</xp:this.converter>
 						</xp:text>
