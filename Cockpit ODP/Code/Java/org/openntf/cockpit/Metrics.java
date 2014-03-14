@@ -35,7 +35,7 @@ public class Metrics implements Serializable {
 			}
 
 			this.ticketCount = ExtLibUtil.getCurrentDatabase().search("SELECT form=\"ticket\" & !(ticketStatus=\"90\" | ticketStatus=\"99\")").getCount();
-			this.urgentCount = ExtLibUtil.getCurrentDatabase().search("SELECT form=\"ticket\" & ticketPriority=\"1\" & (ticketStatus!=\"90\" | ticketStatus!=\"99\")").getCount();
+			this.urgentCount = ExtLibUtil.getCurrentDatabase().search("SELECT form=\"ticket\" & ticketPriority=\"1\" & (ticketStatus!=\"90\" & ticketStatus!=\"99\")").getCount();
 			this.solvedCount = ExtLibUtil.getCurrentDatabase().getView("ticketsSolved").getAllEntries().getCount();
 			this.unassignedCount = ExtLibUtil.getCurrentDatabase().search("SELECT form=\"ticket\" & (ticketResponsible=\"\") & !(ticketStatus=\"90\" | ticketStatus=\"99\")").getCount();
 			this.myCount = ExtLibUtil.getCurrentDatabase().getView("ticketsByResponsible").getAllEntriesByKey(ExtLibUtil.getCurrentSession().getEffectiveUserName()).getCount();

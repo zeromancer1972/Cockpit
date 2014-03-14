@@ -107,7 +107,7 @@ return ctx.isDocEditable(currentDocument.getDocument()) && !currentDocument.isEd
 									</xp:attr>
 								</xp:this.attrs>
 								<xp:selectItems>
-									<xp:this.value><![CDATA[#{javascript:""}]]></xp:this.value>
+									<xp:this.value><![CDATA[#{javascript:"- Select a customer -|"}]]></xp:this.value>
 								</xp:selectItems>
 								<xp:selectItems>
 									<xp:this.value><![CDATA[#{javascript:@DbColumn(@DbName(),"customersNameId",1)}]]></xp:this.value>
@@ -140,16 +140,14 @@ return ctx.isDocEditable(currentDocument.getDocument()) && !currentDocument.isEd
 						</xp:message>
 					</div>
 					<div class="form-group">
-						<xp:label value="Project" id="label7" disableTheme="true">
+						<xp:label value="Project" id="label7" disableTheme="true" for="comboBox4">
 						</xp:label>
 						<div class="input-group">
-							<xp:comboBox id="comboBox4" styleClass="form-control">
-								<xp:this.validators>
-									<xp:validateRequired message="Please select a project">
-									</xp:validateRequired>
-								</xp:this.validators>
+							<xp:comboBox id="comboBox4"
+								styleClass="form-control" style="padding-bottom:7px" value="#{document1.ticketAsset}">
+								
 								<xp:selectItems>
-									<xp:this.value><![CDATA[#{javascript:""}]]></xp:this.value>
+									<xp:this.value><![CDATA[#{javascript:"- Select a project -|"}]]></xp:this.value>
 								</xp:selectItems>
 								<xp:selectItems>
 									<xp:this.value><![CDATA[#{javascript:@DbLookup(@DbName(), "projectsByCustomerId", getComponent("comboBox1").getValue(), "projectName", "[FAILSILENT]")}]]></xp:this.value>
@@ -171,7 +169,7 @@ return ctx.isDocEditable(currentDocument.getDocument()) && !currentDocument.isEd
 								</xp:button>
 							</span>
 						</div>
-						<xp:message id="message4" for="comboBox4"></xp:message>
+						<xp:message id="message4" for="comboBox4" styleClass="alert alert-danger msg"></xp:message>
 					</div>
 					<div class="form-group">
 						<xp:label value="Subject" id="label1" disableTheme="true"

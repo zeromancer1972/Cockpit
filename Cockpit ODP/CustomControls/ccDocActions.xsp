@@ -7,7 +7,7 @@
 				<span class="glyphicon glyphicon-floppy-disk">
 				</span>
 				&#160;Save
-				<xp:eventHandler event="onclick" submit="true">
+				<xp:eventHandler event="onclick" submit="true" refreshMode="partial" refreshId="theform">
 					<xp:this.action>
 						<xp:saveDocument var="document1"></xp:saveDocument>
 					</xp:this.action>
@@ -21,7 +21,7 @@
 				</span>
 				&#160;Save &amp; Close
 				<xp:eventHandler event="onclick" submit="true"
-					refreshMode="complete">
+					refreshMode="partial" refreshId="theform">
 					<xp:this.action>
 
 						<xp:actionGroup>

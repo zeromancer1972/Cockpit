@@ -36,12 +36,14 @@ currentDocument.setValue("ticketUpdated", @Now());}]]></xp:this.querySaveDocumen
 							</xp:attr>
 						</xp:this.attrs>
 						<xp:selectItems>
-							<xp:this.value><![CDATA[#{javascript:""}]]></xp:this.value>
+							<xp:this.value><![CDATA[#{javascript:"Select a customer|"}]]></xp:this.value>
 						</xp:selectItems>
 						<xp:selectItems>
 							<xp:this.value><![CDATA[#{javascript:@DbColumn(@DbName(),"customersNameId",1)}]]></xp:this.value>
 						</xp:selectItems>
-					</xp:comboBox>
+						<xp:eventHandler event="onclick" submit="true"
+							refreshMode="partial" refreshId="comboBox4">
+						</xp:eventHandler></xp:comboBox>
 					<span class="input-group-btn">
 						<xp:button value="New customer" id="button1" styleClass="btn btn-default"
 							disableTheme="true">
@@ -62,6 +64,40 @@ currentDocument.setValue("ticketUpdated", @Now());}]]></xp:this.querySaveDocumen
 					styleClass="alert alert-danger msg" for="comboBox1">
 				</xp:message>
 			</div>
+			<div class="form-group">
+						<xp:label value="Project" id="label7" disableTheme="true" for="comboBox4">
+						</xp:label>
+						<div class="input-group">
+							<xp:comboBox id="comboBox4" styleClass="form-control" style="padding-bottom:7px">
+								<xp:this.validators>
+									<xp:validateRequired message="Please select a project">
+									</xp:validateRequired>
+								</xp:this.validators>
+								<xp:selectItems>
+									<xp:this.value><![CDATA[#{javascript:"Select a project|"}]]></xp:this.value>
+								</xp:selectItems>
+								<xp:selectItems>
+									<xp:this.value><![CDATA[#{javascript:@DbLookup(@DbName(), "projectsByCustomerId", getComponent("comboBox1").getValue(), "projectName", "[FAILSILENT]")}]]></xp:this.value>
+								</xp:selectItems>
+							</xp:comboBox>
+							<span class="input-group-btn">
+								<xp:button value="New project" id="button6"
+									styleClass="btn btn-default" disableTheme="true"
+									rendered="#{javascript:currentDocument.isEditable()}">
+									<xp:eventHandler event="onclick" submit="true"
+										refreshMode="complete" immediate="true">
+										<xp:this.action>
+											<xp:actionGroup>
+												<xp:openPage name="/project.xsp" target="newDocument">
+												</xp:openPage>
+											</xp:actionGroup>
+										</xp:this.action>
+									</xp:eventHandler>
+								</xp:button>
+							</span>
+						</div>
+						<xp:message id="message4" for="comboBox4" styleClass="alert alert-danger msg"></xp:message>
+					</div>
 			<div class="form-group">
 				<xp:label value="Subject" id="label1" disableTheme="true"
 					for="ticketSubject">

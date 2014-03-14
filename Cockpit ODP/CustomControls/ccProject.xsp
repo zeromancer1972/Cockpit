@@ -4,61 +4,65 @@
 		<xp:dominoDocument var="document1" formName="project"></xp:dominoDocument>
 	</xp:this.data>
 	<xc:ccDocActions></xc:ccDocActions>
-	<div class="form-group">
-		<xp:label value="Customer" id="label3" for="comboBox1"
-			disableTheme="true">
-		</xp:label>
-		<div class="input-group">
-			<xp:comboBox id="comboBox1" styleClass="form-control"
-				style="padding-bottom:7px" value="#{document1.projectCustomerId}">
-				
+	<xp:div id="theform">
+		<div class="form-group">
+			<xp:label value="Customer" id="label3" for="comboBox1"
+				disableTheme="true">
+			</xp:label>
+			<div class="input-group">
+				<xp:comboBox id="comboBox1" styleClass="form-control"
+					style="padding-bottom:7px" value="#{document1.projectCustomerId}">
+
+					<xp:this.attrs>
+						<xp:attr name="placeholder" value="Select a customer from the list">
+						</xp:attr>
+					</xp:this.attrs>
+					<xp:this.validators>
+						<xp:validateRequired message="Please select a customer">
+						</xp:validateRequired>
+					</xp:this.validators>
+					<xp:selectItems>
+						<xp:this.value><![CDATA[#{javascript:"- Select a customer -|"}]]></xp:this.value>
+					</xp:selectItems>
+					<xp:selectItems>
+						<xp:this.value><![CDATA[#{javascript:@DbColumn(@DbName(),"customersNameId",1)}]]></xp:this.value>
+					</xp:selectItems>
+				</xp:comboBox>
+				<span class="input-group-btn">
+					<xp:button value="New customer" id="button5" styleClass="btn btn-default"
+						disableTheme="true" rendered="#{javascript:currentDocument.isEditable()}">
+						<xp:eventHandler event="onclick" submit="true"
+							refreshMode="complete" immediate="true">
+							<xp:this.action>
+								<xp:actionGroup>
+									<xp:openPage name="/customer.xsp" target="newDocument">
+									</xp:openPage>
+								</xp:actionGroup>
+							</xp:this.action>
+						</xp:eventHandler>
+					</xp:button>
+				</span>
+			</div>
+			<xp:message id="message3" disableTheme="true"
+				styleClass="alert alert-danger msg" for="comboBox1">
+			</xp:message>
+		</div>
+		<div class="form-group">
+			<xp:label value="Project name" id="label1" for="inputText1"
+				disableTheme="true">
+			</xp:label>
+			<xp:inputText id="inputText1" value="#{document1.projectName}"
+				required="true" styleClass="form-control">
+				<xp:this.validators>
+					<xp:validateRequired message="Please enter a project name">
+					</xp:validateRequired>
+				</xp:this.validators>
 				<xp:this.attrs>
-					<xp:attr name="placeholder"
-						value="Select a customer from the list">
+					<xp:attr name="placeholder" value="Enter a project name">
 					</xp:attr>
 				</xp:this.attrs>
-				<xp:selectItems>
-					<xp:this.value><![CDATA[#{javascript:""}]]></xp:this.value>
-				</xp:selectItems>
-				<xp:selectItems>
-					<xp:this.value><![CDATA[#{javascript:@DbColumn(@DbName(),"customersNameId",1)}]]></xp:this.value>
-				</xp:selectItems>
-			</xp:comboBox>
-			<span class="input-group-btn">
-				<xp:button value="New customer" id="button5" styleClass="btn btn-default"
-					disableTheme="true" rendered="#{javascript:currentDocument.isEditable()}">
-					<xp:eventHandler event="onclick" submit="true"
-						refreshMode="complete" immediate="true">
-						<xp:this.action>
-							<xp:actionGroup>
-								<xp:openPage name="/customer.xsp" target="newDocument">
-								</xp:openPage>
-							</xp:actionGroup>
-						</xp:this.action>
-					</xp:eventHandler>
-				</xp:button>
-			</span>
+			</xp:inputText>
+			<xp:message id="message1" for="inputText1" styleClass="alert alert-danger msg"></xp:message>
 		</div>
-		<xp:message id="message3" disableTheme="true"
-			styleClass="alert alert-danger msg" for="comboBox1">
-		</xp:message>
-	</div>
-	<div class="form-group">
-	<xp:label value="Project name" id="label1" for="inputText1"
-		disableTheme="true">
-	</xp:label>
-	<xp:inputText id="inputText1" value="#{document1.projectName}"
-		required="true" styleClass="form-control">
-		<xp:this.validators>
-			<xp:validateRequired
-				message="Please enter a project name">
-			</xp:validateRequired>
-		</xp:this.validators>
-		<xp:this.attrs>
-			<xp:attr name="placeholder" value="Enter a project name">
-			</xp:attr>
-		</xp:this.attrs>
-	</xp:inputText>
-	<xp:message id="message1" for="inputText1"></xp:message>
-	</div>
+	</xp:div>
 </xp:view>

@@ -1,76 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xp:view xmlns:xp="http://www.ibm.com/xsp/core"
-	xmlns:xc="http://www.ibm.com/xsp/custom">
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xc="http://www.ibm.com/xsp/custom">
 	<xp:this.data>
 		<xp:dominoDocument var="document1" formName="customer">
-			<xp:this.postNewDocument><![CDATA[#{javascript:currentDocument.setValue("customerId", @Unique())}]]></xp:this.postNewDocument></xp:dominoDocument>
+			<xp:this.postNewDocument><![CDATA[#{javascript:currentDocument.setValue("customerId", @Unique())}]]></xp:this.postNewDocument>
+		</xp:dominoDocument>
 	</xp:this.data>
 
 	<xc:ccDocActions></xc:ccDocActions>
-	<div class="form-group">
-		<xp:label value="Name" id="label1" for="inputText1" disableTheme="true"></xp:label>
-		<xp:inputText id="inputText1"
-			value="#{document1.customerName}" styleClass="form-control">
-		</xp:inputText>
-	</div>
-	<div class="form-group">
-		<xp:label value="Name 2" id="label2" for="inputText2" disableTheme="true"></xp:label>
-		<xp:inputText id="inputText2"
-			value="#{document1.customerName2}" styleClass="form-control">
-		</xp:inputText>
-	</div>
-	<div class="form-group">
-		<xp:label value="Contact Person" id="label9" for="inputText8"
-			disableTheme="true">
-		</xp:label>
-		<xp:inputText id="inputText8"
-			value="#{document1.customerPerson}" styleClass="form-control">
-		</xp:inputText>
-	</div>
-	<div class="form-group">
-		<xp:label value="Contact E-Mail" id="label10" for="inputText9"
-			disableTheme="true">
-		</xp:label>
-		<xp:inputText id="inputText9"
-			value="#{document1.customerPersonEmail}" styleClass="form-control">
-		</xp:inputText>
-	</div>
-	<div class="form-group">
-		<xp:label value="Street" id="label3" for="inputText3" disableTheme="true"></xp:label>
-		<xp:inputText id="inputText3"
-			value="#{document1.customerStreet}" styleClass="form-control">
-		</xp:inputText>
-	</div>
-	<div class="form-group">
-		<xp:label value="ZIP" id="label4" for="inputText4" disableTheme="true"></xp:label>
-		<xp:inputText id="inputText4"
-			value="#{document1.customerZIP}" styleClass="form-control">
-		</xp:inputText>
-	</div>
-	<div class="form-group">
-		<xp:label value="City" id="label5" for="inputText5" disableTheme="true"></xp:label>
-		<xp:inputText id="inputText5"
-			value="#{document1.customerCity}" styleClass="form-control">
-		</xp:inputText>
-	</div>
-	<div class="form-group">
-		<xp:label value="E-Mail" id="label6" for="inputText6" disableTheme="true"></xp:label>
-		<xp:inputText id="inputText6"
-			value="#{document1.customerEmail}" styleClass="form-control">
-		</xp:inputText>
-	</div>
-	<div class="form-group">
-		<xp:label value="Phone" id="label7" for="inputText7" disableTheme="true"></xp:label>
-		<xp:inputText id="inputText7"
-			value="#{document1.customerPhone}" styleClass="form-control">
-		</xp:inputText>
-	</div>
-	<div class="form-group">
-		<xp:label id="label8" for="inputRichText1"
-			value="Description" disableTheme="true">
-		</xp:label>
-		<xp:inputRichText id="inputRichText1"
-			value="#{document1.customerDescription}" styleClass="ckeditor">
-		</xp:inputRichText>
-	</div>
+	<xp:div id="theform">
+		<div class="form-group">
+			<xp:label value="Name" id="label1" for="inputText1"
+				disableTheme="true"></xp:label>
+			<xp:inputText id="inputText1"
+				value="#{document1.customerName}" styleClass="form-control"
+				required="true">
+			<xp:this.validators>
+				<xp:validateRequired
+					message="Please enter a customer name">
+
+				</xp:validateRequired>
+			</xp:this.validators></xp:inputText>
+			<xp:message id="message1" for="inputText1"
+				styleClass="alert alert-danger msg">
+			</xp:message>
+		</div>
+		<div class="form-group">
+			<xp:label value="Name 2" id="label2" for="inputText2"
+				disableTheme="true"></xp:label>
+			<xp:inputText id="inputText2" value="#{document1.customerName2}"
+				styleClass="form-control">
+			</xp:inputText>
+		</div>
+		<div class="form-group">
+			<xp:label value="Contact Person" id="label9" for="inputText8"
+				disableTheme="true">
+			</xp:label>
+			<xp:inputText id="inputText8" value="#{document1.customerPerson}"
+				styleClass="form-control">
+			</xp:inputText>
+		</div>
+		<div class="form-group">
+			<xp:label value="Contact E-Mail" id="label10" for="inputText9"
+				disableTheme="true">
+			</xp:label>
+			<xp:inputText id="inputText9" value="#{document1.customerPersonEmail}"
+				styleClass="form-control">
+			</xp:inputText>
+		</div>
+		<div class="form-group">
+			<xp:label value="Street" id="label3" for="inputText3"
+				disableTheme="true"></xp:label>
+			<xp:inputText id="inputText3" value="#{document1.customerStreet}"
+				styleClass="form-control">
+			</xp:inputText>
+		</div>
+		<div class="form-group">
+			<xp:label value="ZIP" id="label4" for="inputText4"
+				disableTheme="true"></xp:label>
+			<xp:inputText id="inputText4" value="#{document1.customerZIP}"
+				styleClass="form-control">
+			</xp:inputText>
+		</div>
+		<div class="form-group">
+			<xp:label value="City" id="label5" for="inputText5"
+				disableTheme="true"></xp:label>
+			<xp:inputText id="inputText5" value="#{document1.customerCity}"
+				styleClass="form-control">
+			</xp:inputText>
+		</div>
+		<div class="form-group">
+			<xp:label value="E-Mail" id="label6" for="inputText6"
+				disableTheme="true"></xp:label>
+			<xp:inputText id="inputText6" value="#{document1.customerEmail}"
+				styleClass="form-control">
+			</xp:inputText>
+		</div>
+		<div class="form-group">
+			<xp:label value="Phone" id="label7" for="inputText7"
+				disableTheme="true"></xp:label>
+			<xp:inputText id="inputText7" value="#{document1.customerPhone}"
+				styleClass="form-control">
+			</xp:inputText>
+		</div>
+		<div class="form-group">
+			<xp:label id="label8" for="inputRichText1" value="Description"
+				disableTheme="true">
+			</xp:label>
+			<xp:inputRichText id="inputRichText1"
+				value="#{document1.customerDescription}" styleClass="ckeditor">
+			</xp:inputRichText>
+		</div>
+	</xp:div>
 </xp:view>
