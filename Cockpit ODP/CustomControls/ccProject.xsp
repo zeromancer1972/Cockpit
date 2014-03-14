@@ -21,7 +21,7 @@
 						<xp:validateRequired message="Please select a customer">
 						</xp:validateRequired>
 					</xp:this.validators>
-					<xp:selectItems>
+					<xp:this.defaultValue><![CDATA[#{javascript:@DbLookup(@DbName(), "customers", context.getUrlParameter("customerId"), "customerId", "[FAILSILENT]")}]]></xp:this.defaultValue><xp:selectItems>
 						<xp:this.value><![CDATA[#{javascript:"- Select a customer -|"}]]></xp:this.value>
 					</xp:selectItems>
 					<xp:selectItems>

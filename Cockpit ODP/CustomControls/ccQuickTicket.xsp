@@ -88,8 +88,18 @@ currentDocument.setValue("ticketUpdated", @Now());}]]></xp:this.querySaveDocumen
 										refreshMode="complete" immediate="true">
 										<xp:this.action>
 											<xp:actionGroup>
-												<xp:openPage name="/project.xsp" target="newDocument">
-												</xp:openPage>
+
+
+
+												<xp:executeScript>
+													<xp:this.script><![CDATA[#{javascript:try {
+	var id = getComponent("comboBox1").getValue();
+} catch(e) {
+	var id = "";
+}
+context.redirectToPage("/project.xsp?customerID="+id)
+}]]></xp:this.script>
+												</xp:executeScript>
 											</xp:actionGroup>
 										</xp:this.action>
 									</xp:eventHandler>

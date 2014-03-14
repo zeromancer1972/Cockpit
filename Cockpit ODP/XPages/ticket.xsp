@@ -157,14 +157,15 @@ return ctx.isDocEditable(currentDocument.getDocument()) && !currentDocument.isEd
 								<xp:button value="New project" id="button6"
 									styleClass="btn btn-default" disableTheme="true"
 									rendered="#{javascript:currentDocument.isEditable()}">
-									<xp:eventHandler event="onclick" submit="true"
-										refreshMode="complete" immediate="true">
-										<xp:this.action>
-											<xp:actionGroup>
-												<xp:openPage name="/project.xsp" target="newDocument">
-												</xp:openPage>
-											</xp:actionGroup>
-										</xp:this.action>
+									<xp:eventHandler event="onclick"
+										submit="true" refreshMode="complete" immediate="true">
+										<xp:this.action><![CDATA[#{javascript:try {
+	var id = getComponent("comboBox1").getValue();
+} catch(e) {
+	var id = "";
+}
+context.redirectToPage("/project.xsp?customerID="+id)
+}]]></xp:this.action>
 									</xp:eventHandler>
 								</xp:button>
 							</span>
