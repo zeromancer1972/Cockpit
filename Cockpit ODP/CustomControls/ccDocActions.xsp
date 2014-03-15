@@ -7,7 +7,8 @@
 				<span class="glyphicon glyphicon-floppy-disk">
 				</span>
 				&#160;Save
-				<xp:eventHandler event="onclick" submit="true" refreshMode="partial" refreshId="theform">
+				<xp:eventHandler event="onclick" submit="true"
+					refreshMode="partial" refreshId="theform">
 					<xp:this.action>
 						<xp:saveDocument var="document1"></xp:saveDocument>
 					</xp:this.action>
@@ -48,21 +49,32 @@ return ctx.isDocEditable(currentDocument.getDocument()) && !currentDocument.isEd
 				</xp:eventHandler>
 			</xp:button>
 
-			<xp:button id="button4" styleClass="btn btn-sm btn-default">
+			<xp:button id="button4" styleClass="btn btn-sm btn-default" value="Close">
 				<span class="glyphicon glyphicon-chevron-left"></span>
 				&#160;
 
-				<xp:this.value><![CDATA[#{javascript:currentDocument.isEditable() ? "Cancel" : "Close"}]]></xp:this.value>
+				
 				<xp:eventHandler event="onclick" submit="true"
 					refreshMode="complete" immediate="true">
 					<xp:this.action><![CDATA[#{javascript:return "close"}]]></xp:this.action>
 				</xp:eventHandler>
 			</xp:button>
-			<xp:panel tagName="span"
-				styleClass="pull-right badge glyphicon glyphicon-cloud-upload"
-				style="font-size:24px" title="This collection is an upload">
-				<xp:this.rendered><![CDATA[#{javascript:currentDocument.getDocument().getItemValueString("fileUpload").equals("1")}]]></xp:this.rendered>
-			</xp:panel>
+			<span class="pull-right">
+				<xp:button id="button5" styleClass="btn btn-sm btn-danger"
+					rendered="#{javascript:currentDocument.isEditable()}" value="Delete">
+					<span class="glyphicon glyphicon-trash"></span>
+					&#160;
+
+					<xp:eventHandler event="onclick" submit="true"
+						refreshMode="complete" immediate="true">
+						<xp:this.action>
+							<xp:deleteDocument name="$$PreviousPage"
+								message="Are you sure to delete this document?" var="document1">
+							</xp:deleteDocument>
+						</xp:this.action>
+					</xp:eventHandler>
+				</xp:button>
+			</span>
 		</xp:div>
 	</xp:div>
 </xp:view>

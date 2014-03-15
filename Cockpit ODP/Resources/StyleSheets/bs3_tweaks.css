@@ -1,3 +1,7 @@
+body {
+	background-color: #eee;
+}
+
 .ckeditor * {
 	box-sizing: content-box;
 	-moz-box-sizing: content-box;

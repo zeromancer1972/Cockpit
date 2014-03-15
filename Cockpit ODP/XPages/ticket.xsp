@@ -72,11 +72,11 @@ return ctx.isDocEditable(currentDocument.getDocument()) && !currentDocument.isEd
 							</xp:eventHandler>
 						</xp:button>
 
-						<xp:button id="button4" styleClass="btn btn-sm btn-default">
+						<xp:button id="button4" styleClass="btn btn-sm btn-default" value="Close">
 							<span class="glyphicon glyphicon-chevron-left"></span>
 							&#160;
 
-							<xp:this.value><![CDATA[#{javascript:currentDocument.isEditable() ? "Cancel" : "Close"}]]></xp:this.value>
+							
 							<xp:eventHandler event="onclick" submit="true"
 								refreshMode="complete" immediate="true">
 								<xp:this.action><![CDATA[#{javascript:return (session.getEffectiveUserName().equals("Anonymous"))?"welcome":"cancel"}]]></xp:this.action>
@@ -144,8 +144,14 @@ return ctx.isDocEditable(currentDocument.getDocument()) && !currentDocument.isEd
 						</xp:label>
 						<div class="input-group">
 							<xp:comboBox id="comboBox4"
-								styleClass="form-control" style="padding-bottom:7px" value="#{document1.ticketAsset}">
-								
+								styleClass="form-control" style="padding-bottom:7px"
+								value="#{document1.ticketAsset}">
+
+								<xp:this.validators>
+									<xp:validateRequired
+										message="Please select a project">
+									</xp:validateRequired>
+								</xp:this.validators>
 								<xp:selectItems>
 									<xp:this.value><![CDATA[#{javascript:"- Select a project -|"}]]></xp:this.value>
 								</xp:selectItems>
