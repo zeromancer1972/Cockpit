@@ -26,7 +26,9 @@
 			</xp:link>
 		</div>
 		<div class="col-lg-3">
-			<xp:link escape="true" id="link3" disableTheme="true" value="/my.xsp">
+			<xp:link escape="true" id="link3" disableTheme="true"
+				value="/my.xsp">
+				<xp:this.rendered><![CDATA[#{javascript:return !session.getEffectiveUserName().equals("Anonymous")}]]></xp:this.rendered>
 				<span class="glyphicon glyphicon-star"></span>
 				&#160;
 				<xp:this.text><![CDATA[#{javascript:"Assigned to me: "+metrics.myCount}]]></xp:this.text>

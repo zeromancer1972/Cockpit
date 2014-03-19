@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xe="http://www.ibm.com/xsp/coreex">
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xe="http://www.ibm.com/xsp/coreex"
+	xmlns:xc="http://www.ibm.com/xsp/custom">
 	<xp:this.beforePageLoad><![CDATA[#{javascript:if(sessionScope.get("page")==null){
 	sessionScope.put("page", "customers");
 }}]]></xp:this.beforePageLoad>
@@ -32,124 +33,148 @@ sessionScope.put("page", "projects");}]]></xp:this.action>
 			</ul>
 		</xp:div>
 		<xp:div styleClass="col-lg-10" disableTheme="true">
-			<div class="panel panel-default">
-				<xe:dynamicContent id="dynamicContent1">
-					<xe:this.defaultFacet><![CDATA[#{javascript:var pagename = sessionScope.get("page");
+
+			<xe:dynamicContent id="dynamicContent1">
+				<xe:this.defaultFacet><![CDATA[#{javascript:var pagename = sessionScope.get("page");
 return pagename!=null && pagename!="" ? pagename : "customers"}]]></xe:this.defaultFacet>
-					<xp:this.facets>
-						<xp:panel xp:key="customers">
-							<xp:this.data>
-								<xp:dominoView var="view1" viewName="customersByName">
-								</xp:dominoView>
-							</xp:this.data>
-							<xp:div styleClass="actionbar">
-								<xp:button value="Create Customer" id="button1"
-									styleClass="btn btn-custom-green">
-									<span class="glyphicon glyphicon-plus"></span>
-									&#160;
-									<xp:eventHandler event="onclick" submit="true"
-										refreshMode="complete">
-										<xp:this.action>
-											<xp:openPage name="/customer.xsp" target="newDocument">
-											</xp:openPage>
-										</xp:this.action>
-									</xp:eventHandler>
-								</xp:button>
-
-							</xp:div>
-							<xp:viewPanel rows="30" id="viewPanel1" viewStyle="width:100%"
-								value="#{view1}">
-								<xp:this.facets>
-									<xp:pager partialRefresh="true" layout="Previous Group Next"
-										xp:key="headerPager" id="pager1">
-									</xp:pager>
-								</xp:this.facets>
-
-								<xp:viewColumn columnName="customerName" id="viewColumn1"
-									displayAs="link">
-									<xp:viewColumnHeader value="Customer name"
-										id="viewColumnHeader1">
+				<xp:this.facets>
+					<xp:panel xp:key="customers" disableTheme="true">
+						<xp:this.data>
+							<xp:dominoView var="view1" viewName="customersByName">
+							</xp:dominoView>
+						</xp:this.data>
+						<xp:div styleClass="actionbar">
+							<xp:button value="Create Customer" id="button1"
+								styleClass="btn btn-custom-green">
+								<span class="glyphicon glyphicon-plus"></span>
+								&#160;
+								<xp:eventHandler event="onclick" submit="true"
+									refreshMode="complete">
+									<xp:this.action>
+										<xp:openPage name="/customer.xsp" target="newDocument">
+										</xp:openPage>
+									</xp:this.action>
+								</xp:eventHandler>
+							</xp:button>
+						</xp:div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<span class="glyphicon glyphicon-usd"></span>
+									&#160;Customers
+								</h4>
+								<xc:ccChevron></xc:ccChevron>
+							</div>
+							<xp:viewPanel rows="30" id="viewPanel1"
+								viewStyle="width:100%" value="#{view1}"
+								dataTableStyleClass="panel-body table table-striped table-condensed table-hover tiny"
+								partialRefresh="true">
+								<xp:viewColumn columnName="customerName"
+									id="viewColumn1" displayAs="link">
+									<xp:viewColumnHeader
+										value="Customer name" id="viewColumnHeader1">
 									</xp:viewColumnHeader>
 								</xp:viewColumn>
 
-								<xp:viewColumn columnName="customerStreet" id="viewColumn3"
+								<xp:viewColumn
+									columnName="customerStreet" id="viewColumn3"
 									displayAs="link">
 									<xp:viewColumnHeader value="Street"
 										id="viewColumnHeader3">
 									</xp:viewColumnHeader>
 								</xp:viewColumn>
-								<xp:viewColumn columnName="customerZIP" id="viewColumn4"
-									displayAs="link">
+								<xp:viewColumn columnName="customerZIP"
+									id="viewColumn4" displayAs="link">
 									<xp:viewColumnHeader value="ZIP"
 										id="viewColumnHeader4">
 									</xp:viewColumnHeader>
 								</xp:viewColumn>
-								<xp:viewColumn columnName="customerCity" id="viewColumn5"
-									displayAs="link">
+								<xp:viewColumn columnName="customerCity"
+									id="viewColumn5" displayAs="link">
 									<xp:viewColumnHeader value="City"
 										id="viewColumnHeader5">
 									</xp:viewColumnHeader>
 								</xp:viewColumn>
-								<xp:viewColumn columnName="customerEmail" id="viewColumn6"
-									displayAs="link">
+								<xp:viewColumn
+									columnName="customerEmail" id="viewColumn6" displayAs="link">
 									<xp:viewColumnHeader value="E-Mail"
 										id="viewColumnHeader6">
 									</xp:viewColumnHeader>
 								</xp:viewColumn>
-								<xp:viewColumn columnName="customerPhone" id="viewColumn7"
-									displayAs="link">
+								<xp:viewColumn
+									columnName="customerPhone" id="viewColumn7" displayAs="link">
 									<xp:viewColumnHeader value="Phone"
 										id="viewColumnHeader7">
 									</xp:viewColumnHeader>
 								</xp:viewColumn>
 							</xp:viewPanel>
-						</xp:panel>
-						<xp:panel xp:key="projects">
-							<xp:this.data>
-								<xp:dominoView var="view2" viewName="projectsByName">
-								</xp:dominoView>
-							</xp:this.data>
-							<xp:div styleClass="actionbar">
-								<xp:button value="Create Project" id="button2"
-									styleClass="btn btn-custom-green">
-									<span class="glyphicon glyphicon-plus"></span>
-									&#160;
-									<xp:eventHandler event="onclick" submit="true"
-										refreshMode="complete">
-										<xp:this.action>
-											<xp:openPage name="/project.xsp" target="newDocument">
-											</xp:openPage>
-										</xp:this.action>
-									</xp:eventHandler>
-								</xp:button>
-
-							</xp:div>
-							<xp:viewPanel rows="30" id="viewPanel2" viewStyle="width:100%"
-								var="entry" value="#{view2}">
-								<xp:this.facets>
-									<xp:pager partialRefresh="true" layout="Previous Group Next"
-										xp:key="headerPager" id="pager2">
+							<div class="panel-footer">
+								<xp:div style="padding: 0px 0px 20px 0px">
+									<xp:pager layout="Previous Group Next" partialRefresh="true"
+										id="pager1" for="viewPanel1" panelPosition="left"
+										disableTheme="true">
 									</xp:pager>
-								</xp:this.facets>
-
-								<xp:viewColumn columnName="projectName" id="viewColumn8"
-									displayAs="link">
+								</xp:div>
+							</div>
+						</div>
+					</xp:panel>
+					<xp:panel xp:key="projects">
+						<xp:this.data>
+							<xp:dominoView var="view2" viewName="projectsByName">
+							</xp:dominoView>
+						</xp:this.data>
+						<xp:div styleClass="actionbar">
+							<xp:button value="Create Project" id="button2"
+								styleClass="btn btn-custom-green">
+								<span class="glyphicon glyphicon-plus"></span>
+								&#160;
+								<xp:eventHandler event="onclick" submit="true"
+									refreshMode="complete">
+									<xp:this.action>
+										<xp:openPage name="/project.xsp" target="newDocument">
+										</xp:openPage>
+									</xp:this.action>
+								</xp:eventHandler>
+							</xp:button>
+						</xp:div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<span class="glyphicon glyphicon-tasks"></span>
+									&#160;Projects
+								</h4>
+								<xc:ccChevron></xc:ccChevron>
+							</div>
+							<xp:viewPanel rows="30" id="viewPanel2"
+								viewStyle="width:100%"
+								dataTableStyleClass="panel-body table table-striped table-condensed table-hover tiny"
+								var="entry" value="#{view2}" partialRefresh="true">
+								<xp:viewColumn columnName="projectName"
+									id="viewColumn8" displayAs="link">
 									<xp:viewColumnHeader value="Project"
 										id="viewColumnHeader8">
 									</xp:viewColumnHeader>
 								</xp:viewColumn>
-								<xp:viewColumn id="viewColumn2" style="width:50%"
-									displayAs="link">
+								<xp:viewColumn id="viewColumn2"
+									style="width:50%" displayAs="link">
 									<xp:this.value><![CDATA[#{javascript:@DbLookup(@DbName(), "customers", entry.getDocument().getItemValueString("projectCustomerId"), "customerName", "[FAILSILENT]")}]]></xp:this.value>
-									<xp:viewColumnHeader id="viewColumnHeader2"
-										value="Customer">
+									<xp:viewColumnHeader
+										id="viewColumnHeader2" value="Customer">
 									</xp:viewColumnHeader>
 								</xp:viewColumn>
 							</xp:viewPanel>
-						</xp:panel>
-					</xp:this.facets>
-				</xe:dynamicContent>
-			</div>
+							<div class="panel-footer">
+								<xp:div style="padding: 0px 0px 20px 0px">
+									<xp:pager
+										layout="Previous Group Next" partialRefresh="true" id="pager3"
+										for="viewPanel2" panelPosition="left" disableTheme="true">
+									</xp:pager>
+								</xp:div>
+							</div>
+						</div>
+					</xp:panel>
+				</xp:this.facets>
+			</xe:dynamicContent>
 		</xp:div>
 	</xp:div>
 </xp:view>

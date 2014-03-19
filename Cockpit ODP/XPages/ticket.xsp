@@ -222,9 +222,9 @@ context.redirectToPage("/project.xsp?customerID="+id)
 							disableTheme="true">
 						</xp:label>
 						<xp:comboBox id="comboBox2" value="#{document1.ticketPriority}"
-							styleClass="form-control">
+							styleClass="form-control" defaultValue="2">
 							<xp:selectItems>
-								<xp:this.value><![CDATA[#{javascript:return ["","urgent|1","normal|2","low|3"];
+								<xp:this.value><![CDATA[#{javascript:return ["urgent|1","normal|2","low|3"];
 }]]></xp:this.value>
 							</xp:selectItems>
 						</xp:comboBox>
@@ -234,10 +234,10 @@ context.redirectToPage("/project.xsp?customerID="+id)
 							disableTheme="true">
 						</xp:label>
 						<xp:comboBox id="comboBox3" value="#{document1.ticketStatus}"
-							styleClass="form-control">
-							<xp:this.defaultValue><![CDATA[#{javascript:"1"}]]></xp:this.defaultValue>
+							styleClass="form-control" defaultValue="1">
+							
 							<xp:selectItems>
-								<xp:this.value><![CDATA[#{javascript:return ["","open|1","investigating|10","work in progress|20", "solved|90", "closed|99"];
+								<xp:this.value><![CDATA[#{javascript:return ["open|1","investigating|10","work in progress|20", "solved|90", "closed|99"];
 }]]></xp:this.value>
 							</xp:selectItems>
 						</xp:comboBox>
