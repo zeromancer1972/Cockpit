@@ -101,7 +101,7 @@ return ctx.isDocEditable(currentDocument.getDocument()) && !currentDocument.isEd
 
 								<xp:this.validators>
 									<xp:validateRequired
-										message="Please select a value from the list">
+										message="Please select a customer from the list">
 									</xp:validateRequired>
 								</xp:this.validators>
 								<xp:this.attrs>
@@ -154,7 +154,7 @@ return ctx.isDocEditable(currentDocument.getDocument()) && !currentDocument.isEd
 
 								<xp:this.validators>
 									<xp:validateRequired
-										message="Please select a value from the list">
+										message="Please select a project">
 									</xp:validateRequired>
 								</xp:this.validators>
 								<xp:selectItems>
