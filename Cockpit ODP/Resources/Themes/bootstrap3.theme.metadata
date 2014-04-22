@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.0" replicaid="C1257C96004E0544" version="9.0" xmlns="http://www.lotus.com/dxl">
-<noteinfo noteid="21a" sequence="22" unid="7423D0093706E5C0C1257C96004E8B9E">
+<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.1" replicaid="C1257C96004E0544" version="9.0" xmlns="http://www.lotus.com/dxl">
+<noteinfo noteid="21a" sequence="52" unid="7423D0093706E5C0C1257C96004E8B9E">
 <created><datetime>20140309T151755,50+01</datetime></created>
-<modified><datetime>20140320T185320,17+01</datetime></modified>
-<revised><datetime>20140320T185320,16+01</datetime></revised>
-<lastaccessed><datetime>20140320T185320,17+01</datetime></lastaccessed>
+<modified><datetime dst="true">20140422T191454,29+02</datetime></modified>
+<revised><datetime dst="true">20140422T191454,28+02</datetime></revised>
+<lastaccessed><datetime dst="true">20140422T191454,29+02</datetime></lastaccessed>
 <addedtofile><datetime>20140309T151756,40+01</datetime></addedtofile></noteinfo>
 <updatedby><name>CN=Oliver Busse/O=ulcbs</name></updatedby>
 <wassignedby><name>CN=Oliver Busse/O=ulcbs</name></wassignedby>
@@ -13,4 +13,4 @@
 
 
 <item name="$FileNames" sign="true"><text>bootstrap3.theme</text></item>
-<item name="$CSSFiles"><textlist><text>flick/css/flick/jquery-ui-1.10.4.custom.min.css</text><text>bootstrap-3.1.1-dist/css/bootstrap.min.css</text><text>bs3_tweaks.css</text></textlist></item></note>
+<item name="$CSSFiles"><textlist><text>bs3_tweaks.css</text></textlist></item></note>

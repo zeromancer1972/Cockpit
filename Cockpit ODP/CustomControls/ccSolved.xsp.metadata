@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.0" replicaid="C1257C96004E0544" version="9.0" xmlns="http://www.lotus.com/dxl">
-<noteinfo noteid="3d6" sequence="24" unid="9F781891821DF3FDC1257C990073A75A">
+<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.1" replicaid="C1257C96004E0544" version="9.0" xmlns="http://www.lotus.com/dxl">
+<noteinfo noteid="3d6" sequence="25" unid="9F781891821DF3FDC1257C990073A75A">
 <created><datetime>20140312T220314,82+01</datetime></created>
-<modified><datetime>20140313T180607,40+01</datetime></modified>
-<revised><datetime>20140312T220940,79+01</datetime></revised>
-<lastaccessed><datetime>20140313T180607,40+01</datetime></lastaccessed>
+<modified><datetime dst="true">20140422T191900,55+02</datetime></modified>
+<revised><datetime dst="true">20140422T191900,54+02</datetime></revised>
+<lastaccessed><datetime dst="true">20140422T191900,55+02</datetime></lastaccessed>
 <addedtofile><datetime>20140313T180607,40+01</datetime></addedtofile></noteinfo>
 <updatedby><name>CN=Oliver Busse/O=ulcbs</name></updatedby>
 <wassignedby><name>CN=Oliver Busse/O=ulcbs</name></wassignedby>
@@ -14,9 +14,9 @@
 
 
 
-
-
-<item name="$FileNames" sign="true"><text>ccSolved.xsp</text></item>
 <item name="$DesignerVersion"><text>8.5</text></item>
 
-</note>
+
+
+
+<item name="$FileNames" sign="true"><text>ccSolved.xsp</text></item></note>

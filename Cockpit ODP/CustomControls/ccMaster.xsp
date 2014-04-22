@@ -109,10 +109,9 @@ return pagename!=null && pagename!="" ? pagename : "customers"}]]></xe:this.defa
 								</xp:viewColumn>
 							</xp:viewPanel>
 							<div class="panel-footer">
-								<xp:div style="padding: 0px 0px 20px 0px">
+								<xp:div>
 									<xp:pager layout="Previous Group Next" partialRefresh="true"
-										id="pager1" for="viewPanel1" panelPosition="left"
-										disableTheme="true">
+										id="pager1" for="viewPanel1" panelPosition="left">
 									</xp:pager>
 								</xp:div>
 							</div>
@@ -164,10 +163,10 @@ return pagename!=null && pagename!="" ? pagename : "customers"}]]></xe:this.defa
 								</xp:viewColumn>
 							</xp:viewPanel>
 							<div class="panel-footer">
-								<xp:div style="padding: 0px 0px 20px 0px">
+								<xp:div>
 									<xp:pager
 										layout="Previous Group Next" partialRefresh="true" id="pager3"
-										for="viewPanel2" panelPosition="left" disableTheme="true">
+										for="viewPanel2" panelPosition="left">
 									</xp:pager>
 								</xp:div>
 							</div>

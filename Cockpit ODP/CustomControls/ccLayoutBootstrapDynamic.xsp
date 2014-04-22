@@ -59,10 +59,9 @@ if(url.indexOf(".xsp")==-1){
 						<xp:panel tagName="li">
 							<xp:this.rendered><![CDATA[#{javascript:return view.getPageName().indexOf("ticket.xsp")==-1 && database.queryAccessRoles(session.getEffectiveUserName()).contains("[Masterdata]")}]]></xp:this.rendered>
 							<xp:this.styleClass><![CDATA[#{javascript:return view.getPageName().indexOf("master")!=-1?"active":""}]]></xp:this.styleClass>
-							<xp:link escape="true" text="Masterdata"
-								id="link3" value="/master.xsp" disableTheme="true">
-								<span
-									class="glyphicon glyphicon-briefcase">
+							<xp:link escape="true" text="Masterdata" id="link3"
+								value="/master.xsp" disableTheme="true">
+								<span class="glyphicon glyphicon-briefcase">
 								</span>
 								&#160;
 							</xp:link>
@@ -150,11 +149,9 @@ var uploadtext = (uploads>0)?" ("+uploads.toString()+")":"";
 		</div>
 
 		<div class="container" style="padding-bottom:70px">
-			<div class="row">
-				<div class="col-xs-12 col-md-12">
+			
 					<xp:callback facetName="facetMiddle" id="facetMiddle"></xp:callback>
-				</div>
-			</div>
+				
 		</div>
 
 		<nav class="navbar navbar-inverse navbar-fixed-bottom " role="navigation"
