@@ -67,8 +67,8 @@ return ctx.isDocEditable(currentDocument.getDocument()) && !currentDocument.isEd
 					<xp:convertNumber type="number"></xp:convertNumber>
 				</xp:this.converter>
 				<xp:this.validators>
-					<xp:validateLongRange minimum="1" maximum="7"
-						message="Please enter a value between 1 and 7">
+					<xp:validateLongRange minimum="1"
+						message="Please enter a positive value greater than 0">
 					</xp:validateLongRange>
 					<xp:validateRequired message="Please enter a value">
 					</xp:validateRequired>

@@ -188,10 +188,6 @@ a.nav-disabled {
 	padding-right: 0px;
 }
 
-.row {
-	margin-left: 0px;
-	margin-right: 0px;
-}
 
 .pagination>.active>a,.pagination>.active>span,.pagination>.active>a:hover,.pagination>.active>span:hover,.pagination>.active>a:focus,.pagination>.active>span:focus
 	{
