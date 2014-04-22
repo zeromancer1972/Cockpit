@@ -5,6 +5,8 @@ import java.io.Serializable;
 import lotus.domino.Database;
 import lotus.domino.NotesException;
 
+import org.openntf.domino.utils.XSPUtil;
+
 import com.ibm.xsp.extlib.util.ExtLibUtil;
 
 public class Acl implements Serializable {
@@ -14,7 +16,7 @@ public class Acl implements Serializable {
 
 	public Acl() {
 		try {
-			this.createDocuments = (ExtLibUtil.getCurrentDatabase().queryAccessPrivileges(ExtLibUtil.getCurrentSession().getEffectiveUserName()) & Database.DBACL_CREATE_DOCS) > 0;
+			this.createDocuments = (XSPUtil.getCurrentDatabase().queryAccessPrivileges(ExtLibUtil.getCurrentSession().getEffectiveUserName()) & Database.DBACL_CREATE_DOCS) > 0;
 		} catch (NotesException e) {
 
 			e.printStackTrace();

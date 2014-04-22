@@ -8,6 +8,8 @@ import lotus.domino.Document;
 import lotus.domino.Item;
 import lotus.domino.Name;
 
+import org.openntf.domino.utils.XSPUtil;
+
 import com.ibm.icu.text.SimpleDateFormat;
 import com.ibm.xsp.extlib.util.ExtLibUtil;
 
@@ -37,7 +39,7 @@ public class History implements Serializable {
 		Name user = null;
 		Item it = null;
 		try {
-			user = ExtLibUtil.getCurrentSession().createName(ExtLibUtil.getCurrentSession().getEffectiveUserName());
+			user = XSPUtil.getCurrentSession().createName(ExtLibUtil.getCurrentSession().getEffectiveUserName());
 			msg = user.getAbbreviated() + "::" + now + "::" + msg;
 			if (doc.hasItem("ticketHistory")) {
 				it = doc.getFirstItem("ticketHistory");

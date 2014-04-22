@@ -6,7 +6,7 @@ import java.util.Vector;
 import lotus.domino.Document;
 import lotus.domino.Session;
 
-import com.ibm.xsp.extlib.util.ExtLibUtil;
+import org.openntf.domino.utils.XSPUtil;
 
 public class RightsManagement implements Serializable {
 	private static final long serialVersionUID = 8157811105680678241L;
@@ -21,7 +21,7 @@ public class RightsManagement implements Serializable {
 	 */
 	@SuppressWarnings("unchecked")
 	public void setNames(Document doc) {
-		Session session = ExtLibUtil.getCurrentSession();
+		Session session = XSPUtil.getCurrentSession();
 		Vector names = null;
 		// item names as array
 		String items[] = { "ticketResponsible" };

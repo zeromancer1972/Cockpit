@@ -1,14 +1,17 @@
-<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.0" replicaid="C1257C96004E0544" version="9.0" xmlns="http://www.lotus.com/dxl">
-<noteinfo noteid="28e" sequence="3" unid="3BDAE76EAAEC26E0C1257C9600658647">
+<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.1" replicaid="C1257C96004E0544" version="9.0" xmlns="http://www.lotus.com/dxl">
+<noteinfo noteid="28e" sequence="175" unid="3BDAE76EAAEC26E0C1257C9600658647">
 <created><datetime>20140309T192855,11+01</datetime></created>
-<modified><datetime>20140309T192856,12+01</datetime></modified>
-<revised><datetime>20140309T192856,11+01</datetime></revised>
-<lastaccessed><datetime>20140309T192856,12+01</datetime></lastaccessed>
+<modified><datetime dst="true">20140422T193537,06+02</datetime></modified>
+<revised><datetime dst="true">20140422T193537,05+02</datetime></revised>
+<lastaccessed><datetime dst="true">20140422T193537,06+02</datetime></lastaccessed>
 <addedtofile><datetime>20140309T192855,13+01</datetime></addedtofile></noteinfo>
 <updatedby><name>CN=Oliver Busse/O=ulcbs</name></updatedby>
 <wassignedby><name>CN=Oliver Busse/O=ulcbs</name></wassignedby>
 <item name="$Flags"><text>34567Cg~[</text></item>
 <item name="$TITLE"><text>org/openntf/cockpit/Metrics.java</text></item>
+
+
+
 <item name="$DesignerVersion"><text>8.5.3</text></item>
 
 

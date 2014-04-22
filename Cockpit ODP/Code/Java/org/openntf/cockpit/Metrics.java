@@ -9,8 +9,9 @@ import lotus.domino.Document;
 import lotus.domino.DocumentCollection;
 import lotus.domino.NotesException;
 
+import org.openntf.domino.utils.XSPUtil;
+
 import com.ibm.icu.text.SimpleDateFormat;
-import com.ibm.xsp.extlib.util.ExtLibUtil;
 
 public class Metrics implements Serializable {
 
@@ -28,17 +29,17 @@ public class Metrics implements Serializable {
 	public Metrics() {
 		// calc all the values
 		try {
-			Document profile = ExtLibUtil.getCurrentDatabase().getView("profiles").getDocumentByKey("profile");
+			Document profile = XSPUtil.getCurrentDatabase().getView("profiles").getDocumentByKey("profile");
 			if (profile != null) {
 				this.dayOverdue = profile.getItemValueInteger("profileOverdue");
 				profile.recycle();
 			}
 
-			this.ticketCount = ExtLibUtil.getCurrentDatabase().search("SELECT form=\"ticket\" & !(ticketStatus=\"90\" | ticketStatus=\"99\")").getCount();
-			this.urgentCount = ExtLibUtil.getCurrentDatabase().search("SELECT form=\"ticket\" & ticketPriority=\"1\" & (ticketStatus!=\"90\" & ticketStatus!=\"99\")").getCount();
-			this.solvedCount = ExtLibUtil.getCurrentDatabase().getView("ticketsSolved").getAllEntries().getCount();
-			this.unassignedCount = ExtLibUtil.getCurrentDatabase().search("SELECT form=\"ticket\" & (ticketResponsible=\"\") & !(ticketStatus=\"90\" | ticketStatus=\"99\")").getCount();
-			this.myCount = ExtLibUtil.getCurrentDatabase().getView("ticketsByResponsible").getAllEntriesByKey(ExtLibUtil.getCurrentSession().getEffectiveUserName()).getCount();
+			this.ticketCount = XSPUtil.getCurrentDatabase().search("SELECT form=\"ticket\" & !(ticketStatus=\"90\" | ticketStatus=\"99\")").getCount();
+			this.urgentCount = XSPUtil.getCurrentDatabase().search("SELECT form=\"ticket\" & ticketPriority=\"1\" & (ticketStatus!=\"90\" & ticketStatus!=\"99\")").getCount();
+			this.solvedCount = XSPUtil.getCurrentDatabase().getView("ticketsSolved").getAllEntries().getCount();
+			this.unassignedCount = XSPUtil.getCurrentDatabase().search("SELECT form=\"ticket\" & (ticketResponsible=\"\") & !(ticketStatus=\"90\" | ticketStatus=\"99\")").getCount();
+			this.myCount = XSPUtil.getCurrentDatabase().getView("ticketsByResponsible").getAllEntriesByKey(XSPUtil.getCurrentSession().getEffectiveUserName()).getCount();
 			this.overdue = new ArrayList<Ticket>();
 			calcOverdue();
 			calcDuration();
@@ -55,15 +56,15 @@ public class Metrics implements Serializable {
 		String search = "SELECT form=\"ticket\" & ticketCreated < @Adjust(@Now;0;0;-" + this.dayOverdue + ";0;0;0) & (ticketStatus!=\"90\" & ticketStatus!=\"99\")";
 
 		try {
-			DocumentCollection col = ExtLibUtil.getCurrentDatabase().search(search);
+			DocumentCollection col = XSPUtil.getCurrentDatabase().search(search);
 			DateTime dt = null;
 
 			Document doc = col.getFirstDocument();
 			SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy hh:mm a", Locale.ENGLISH);
 			while (doc != null) {
 				dt = (DateTime) doc.getItemValueDateTimeArray("ticketCreated").elementAt(0);
-				this.overdue.add(new Ticket(doc.getUniversalID(), formatter.format(dt.toJavaDate()), doc.getItemValueString("ticketSubject"), ExtLibUtil.getCurrentSession().createName(
-						doc.getItemValueString("ticketResponsible")).getCommon(), ExtLibUtil.getCurrentSession().createName(doc.getItemValueString("ticketResponsible")).getAbbreviated(), doc.getItemValueString("ticketStatus")));
+				this.overdue.add(new Ticket(doc.getUniversalID(), formatter.format(dt.toJavaDate()), doc.getItemValueString("ticketSubject"), XSPUtil.getCurrentSession().createName(
+						doc.getItemValueString("ticketResponsible")).getCommon(), XSPUtil.getCurrentSession().createName(doc.getItemValueString("ticketResponsible")).getAbbreviated(), doc.getItemValueString("ticketStatus")));
 				doc = col.getNextDocument(doc);
 			}
 			if (doc != null)
