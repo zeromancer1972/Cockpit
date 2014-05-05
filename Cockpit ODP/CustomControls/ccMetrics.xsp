@@ -3,8 +3,7 @@
 	<h4>Overall Metrics</h4>
 	<div class="row">
 		<div class="col-lg-3">
-			<xp:link escape="true" id="link1" disableTheme="true"
-				value="/latest.xsp">
+			<xp:link escape="true" id="link1" disableTheme="true" value="/latest.xsp">
 				<span class="glyphicon glyphicon-signal"></span>
 				&#160;
 				<xp:this.text><![CDATA[#{javascript:"Ticket count: "+metrics.ticketCount+" ("+metrics.solvedCount+" solved/closed)"}]]></xp:this.text>
@@ -25,21 +24,43 @@
 				<xp:this.text><![CDATA[#{javascript:"Urgent: "+metrics.urgentCount}]]></xp:this.text>
 			</xp:link>
 		</div>
-		<div class="col-lg-3">
-			<xp:link escape="true" id="link3" disableTheme="true"
-				value="/my.xsp">
+		<div class="col-lg-2">
+			<xp:link escape="true" id="link3" disableTheme="true" value="/my.xsp">
 				<xp:this.rendered><![CDATA[#{javascript:return !session.getEffectiveUserName().equals("Anonymous")}]]></xp:this.rendered>
 				<span class="glyphicon glyphicon-star"></span>
 				&#160;
 				<xp:this.text><![CDATA[#{javascript:"Assigned to me: "+metrics.myCount}]]></xp:this.text>
 			</xp:link>
 		</div>
-		<div class="col-lg-2">
-			<xp:link escape="true" id="link6" disableTheme="true">
-				<span class="glyphicon glyphicon-ok"></span>
-				&#160;
-				<xp:this.text><![CDATA[#{javascript:"Solution Quota: "+ @Round(metrics.quota)+"%"}]]></xp:this.text>
-			</xp:link>
+		<div class="col-lg-3">		
+			<xp:div styleClass="progress progress-striped active">
+				<xp:div
+					style="width: #{javascript:@Round(metrics.quota)}%;">
+					<xp:this.attrs>
+						<xp:attr name="aria-valuenow"
+							value="#{javascript:@Round(metrics.quota)}">
+						</xp:attr>
+						<xp:attr name="aria-valuemax" value="100">
+						</xp:attr>
+					</xp:this.attrs>
+					<xp:this.styleClass><![CDATA[#{javascript:var quota = @Round(metrics.quota);
+var status = "progress-bar-danger";
+if(quota>25){
+	status = "progress-bar-warning";
+}
+if(quota>50){
+	status = "progress-bar-info";
+}
+if(quota>75){
+	status = "progress-bar-success";
+}
+
+return "progress-bar "+status;}]]></xp:this.styleClass>
+					<xp:text>
+						<xp:this.value><![CDATA[#{javascript:@Round(metrics.quota)+"%"}]]></xp:this.value>
+					</xp:text>
+				</xp:div>
+			</xp:div>			
 		</div>
 	</div>
 </xp:view>
